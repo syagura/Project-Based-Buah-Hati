@@ -1,34 +1,40 @@
-import express, { Application, Request, Response, NextFunction } from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import 'dotenv/config'
+import Hapi from '@hapi/hapi'
+import dotenv from 'dotenv'
 import { logger } from './utils/logger'
 import { routes } from './routes'
-
-// connect to database
 import './utils/connectDB'
-
 import deserializeToken from './middlewares/deserializedToken'
 
-const app: Application = express()
+dotenv.config()
+
 const host: any = process.env.HOST
 const port: any = process.env.PORT
 
-// parse body request
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+const init = async () => {
+  const server = Hapi.server({
+    host: host,
+    port: port,
+    routes: {
+      cors: {
+        origin: ['*'],
+        additionalHeaders: ['cache-control', 'x-requested-with']
+      }
+    }
+  })
 
-// cors access handler
-app.use(cors())
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.setHeader('Access-Control-Allow-Origin', '*')
-  res.setHeader('Access-Control-Allow-Methods', '*')
-  res.setHeader('Access-Control-Allow-Headers', '*')
-  next()
+  // Register middleware
+  deserializeToken(server)
+
+  // Register routes
+  routes(server)
+
+  await server.start()
+  logger.info(`Server running on ${server.info.uri}`)
+}
+
+process.on('unhandledRejection', (err) => {
+  logger.error(err)
+  process.exit(1)
 })
 
-routes(app)
-
-app.listen(port, () => {
-  logger.info(`Server is listening on http://${host}:${port}`)
-})
+init()

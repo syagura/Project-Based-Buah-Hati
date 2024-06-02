@@ -1,11 +1,11 @@
-import { Application, Router } from 'express'
+import Hapi from '@hapi/hapi'
 import { AuthRouter } from './auth.route'
 
-const _routes: Array<[string, Router]> = [['/user', AuthRouter]]
+const allRoutes: Hapi.ServerRoute[] = [
+  ...AuthRouter
+  // Add more routes arrays as needed
+]
 
-export const routes = (app: Application) => {
-  _routes.forEach((route) => {
-    const [url, router] = route
-    app.use(url, router)
-  })
+export const routes = (server: Hapi.Server) => {
+  server.route(allRoutes)
 }
