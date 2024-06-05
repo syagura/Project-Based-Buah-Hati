@@ -18,27 +18,44 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        replaceFragment(HomeFragment())
 
-        binding.bottomNavigation.setOnClickListener{
-            when(it.id){
-                R.id.menu_1 -> replaceFragment(HomeFragment())
-                R.id.menu_2 -> replaceFragment(InputPertumbuhanFragment())
-                R.id.menu_3 -> replaceFragment(ProfileFragment())
-                else -> {
+        replaceFragment(HomeFragment(), "HomeFragment")
 
+        binding.bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu_1 -> {
+                    replaceFragment(HomeFragment(), "HomeFragment")
+                    true
                 }
+                R.id.menu_2 -> {
+                    replaceFragment(InputPertumbuhanFragment(), "InputPertumbuhanFragment")
+                    true
+                }
+                R.id.menu_3 -> {
+                    replaceFragment(ProfileFragment(), "ProfileFragment")
+                    true
+                }
+                else -> false
             }
-            true
+        }
+
+        supportFragmentManager.addOnBackStackChangedListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.layout_frame)
+            if (fragment is ProfileFragment) {
+                supportActionBar?.show()
+            } else {
+                supportActionBar?.hide()
+            }
         }
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).itemActiveIndicatorColor = getColorStateList(R.color.pink)
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragment: Fragment, tag: String) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.layout_frame, fragment)
+        fragmentTransaction.replace(R.id.layout_frame, fragment, tag)
+        fragmentTransaction.addToBackStack(tag)
         fragmentTransaction.commit()
     }
 }
