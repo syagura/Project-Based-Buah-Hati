@@ -1,4 +1,5 @@
 import Hapi from '@hapi/hapi'
+import { requireUser } from '../middlewares/auth'
 import { createSession, getSingleUser, refreshSession, registerUser } from '../controllers/auth.controller'
 
 export const AuthRouter: Hapi.ServerRoute[] = [
@@ -15,11 +16,17 @@ export const AuthRouter: Hapi.ServerRoute[] = [
   {
     method: 'POST',
     path: '/user/refresh',
-    handler: refreshSession
+    options: {
+      pre: [{ method: requireUser }],
+      handler: refreshSession
+    }
   },
   {
     method: 'GET',
     path: '/user/{id}',
-    handler: getSingleUser
+    options: {
+      pre: [{ method: requireUser }],
+      handler: getSingleUser
+    }
   }
 ]
