@@ -21,6 +21,7 @@ class SplashActivity : AppCompatActivity() {
 
         setupView()
         setupAction()
+        supportActionBar?.hide()
     }
 
     private fun setupView(){
