@@ -1,5 +1,5 @@
 import { Request, ResponseToolkit } from '@hapi/hapi'
-import { findUserByEmail, registerUserToDB } from '../services/auth.service'
+import { findUserByEmail, getUserById, registerUserToDB } from '../services/auth.service'
 import {
   createSessionValidation,
   refreshSessionValidation,
@@ -154,5 +154,30 @@ export const refreshSession = async (request: Request, h: ResponseToolkit) => {
         message: error
       })
       .code(500)
+  }
+}
+
+export const getSingleUser = async (request: Request, h: ResponseToolkit) => {
+  const {
+    params: { id }
+  } = request
+
+  if (id) {
+    const user = await getUserById(id)
+    if (user) {
+      logger.info('Success get user data')
+      return h.response({
+        status: true,
+        statusCode: 200,
+        data: user
+      })
+    }
+    logger.error('Data not found')
+    return h.response({
+      status: false,
+      statusCode: 404,
+      message: 'Data not found',
+      data: {}
+    })
   }
 }
