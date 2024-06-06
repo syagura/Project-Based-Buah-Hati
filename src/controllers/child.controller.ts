@@ -52,11 +52,11 @@ export const registerChild = async (request: Request, h: ResponseToolkit) => {
 
 export const getChild = async (request: Request, h: ResponseToolkit) => {
   const {
-    params: { id }
+    params: { user_id, id }
   } = request
 
   if (id) {
-    const child = await getChildById(id)
+    const child = await getChildById(user_id, id)
     if (child) {
       logger.info('Success get child data')
       return h.response({
@@ -73,8 +73,8 @@ export const getChild = async (request: Request, h: ResponseToolkit) => {
       data: {}
     })
   } else {
-    const childs = await getChildsFromDB()
-    logger.info('Success get product data')
+    const childs = await getChildsFromDB(user_id)
+    logger.info('Success get child data')
     return h.response({
       status: true,
       statusCode: 200,

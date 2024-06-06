@@ -9,12 +9,12 @@ export const ChildRouter: Hapi.ServerRoute[] = [
   },
   {
     method: 'GET',
-    path: '/child',
+    path: '/child/{user_id}',
     handler: getChild
   },
   {
     method: 'GET',
-    path: '/child/{id}',
+    path: '/child/{user_id}/{id}',
     handler: getChild
   }
 ]

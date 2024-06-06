@@ -6,9 +6,9 @@ export const registerChildToDB = async (payload: ChildType) => {
   return await childModel.create(payload)
 }
 
-export const getChildsFromDB = async () => {
+export const getChildsFromDB = async (id: String) => {
   return await childModel
-    .find()
+    .find({ user_id: id })
     .then((data) => {
       return data
     })
@@ -18,6 +18,6 @@ export const getChildsFromDB = async () => {
     })
 }
 
-export const getChildById = async (id: String) => {
-  return await childModel.findOne({ child_id: id })
+export const getChildById = async (user_id: String, child_id: String) => {
+  return await childModel.findOne({ user_id, child_id })
 }
