@@ -1,8 +1,10 @@
 import Hapi from '@hapi/hapi'
 import { AuthRouter } from './auth.route'
+import { ChildRouter } from './child.route'
 
 const allRoutes: Hapi.ServerRoute[] = [
-  ...AuthRouter
+  ...AuthRouter,
+  ...ChildRouter
   // Add more routes arrays as needed
 ]
 
