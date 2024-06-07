@@ -4,8 +4,8 @@ export default interface ChildType {
   name: String
   birthdate: String
   gender: Number
-  // head_circumference: Number
-  // body_weight: Number
-  // body_height: Number
+  body_weight: Number
+  body_height: Number
+  head_circumference: Number
   blood_type: String
 }

@@ -19,15 +19,15 @@ const childSchema = new mongoose.Schema(
       type: Number,
       enum: [1, 0] // 1 (boy), 0 (girl)
     },
-    // head_circumference: {
-    //   type: Number
-    // },
-    // body_weight: {
-    //   type: Number
-    // },
-    // body_height: {
-    //   type: Number
-    // },
+    body_weight: {
+      type: Number
+    },
+    body_height: {
+      type: Number
+    },
+    head_circumference: {
+      type: Number
+    },
     blood_type: {
       type: String,
       enum: ['A', 'B', 'AB', 'O']

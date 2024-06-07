@@ -8,9 +8,9 @@ export const registerChildValidation = (payload: ChildType) => {
     name: Joi.string().required(),
     birthdate: Joi.string().required(),
     gender: Joi.number().required(),
-    // head_circumference: Joi.number().required(),
-    // body_weight: Joi.number().required(),
-    // body_height: Joi.number().required(),
+    body_weight: Joi.number().required(),
+    body_height: Joi.number().required(),
+    head_circumference: Joi.number().required(),
     blood_type: Joi.string().required()
   })
   return schema.validate(payload)
