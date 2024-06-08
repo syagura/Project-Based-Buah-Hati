@@ -1,8 +1,8 @@
 {
-  "name": "auth-capstone01-server",
+  "name": "buah-hati-capstone-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "start": "npx tsc -w",
     "dev": "npx nodemon",
