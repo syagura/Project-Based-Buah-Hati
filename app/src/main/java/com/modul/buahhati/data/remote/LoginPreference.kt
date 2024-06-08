@@ -44,11 +44,18 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
+    fun getUserId() : Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[USER_ID]
+        }
+    }
+
     companion object {
         @Volatile
         private var INSTANCE: LoginPreference? = null
 
         private val TOKEN_KEY = stringPreferencesKey("token")
+        private val USER_ID = stringPreferencesKey("user_id")
         private val LOGIN_KEY = booleanPreferencesKey("is_login")
 
         fun getInstance(dataStore: DataStore<Preferences>): LoginPreference {

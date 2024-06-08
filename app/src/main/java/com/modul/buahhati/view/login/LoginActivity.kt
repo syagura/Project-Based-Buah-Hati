@@ -19,6 +19,7 @@ import com.modul.buahhati.databinding.ActivityLoginBinding
 import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
 import com.modul.buahhati.view.main.MainActivity
+import com.modul.buahhati.view.regis_anak.RegistrasiAnakActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -49,13 +50,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        val factory: ViewModelFactory =
-            ViewModelFactory.getInstance(
-                this, LoginPreference.getInstance(dataStore)
-            )
+        val factory: ViewModelFactory = ViewModelFactory.getInstance(
+            this, LoginPreference.getInstance(dataStore)
+        )
 
-        val viewModel: LoginViewModel =
-            ViewModelProvider(this, factory)[LoginViewModel::class.java]
+        val viewModel: LoginViewModel = ViewModelProvider(this, factory)[LoginViewModel::class.java]
 
         binding.btnLogin.setOnClickListener {
             val email = binding.edLoginEmail.text.toString()
@@ -69,48 +68,59 @@ class LoginActivity : AppCompatActivity() {
                     binding.edLoginPassword.error = getString(R.string.input_password)
                 }
                 else -> {
-                    viewModel.login(email, password).observe(this){
-                        if(it != null){
-                            when(it){
-                                is Result.Loading-> {
+                    viewModel.login(email, password).observe(this) {
+                        if (it != null) {
+                            when (it) {
+                                is Result.Loading -> {
                                     binding.progressBar.visibility = View.VISIBLE
                                 }
                                 is Result.Success -> {
                                     binding.progressBar.visibility = View.GONE
                                     val response = it.data
                                     viewModel.saveState(response.data.toString())
-                                    AlertDialog.Builder(this).apply {
-                                        setTitle(getString(R.string.success))
-                                        setMessage(getString(R.string.welcome_message))
-                                        setPositiveButton(getString(R.string.continue_message)) { _, _ ->
-                                            startActivity(
-                                                Intent(
-                                                    this@LoginActivity, MainActivity::class.java
-                                                )
-                                            )
+
+                                    if (!isFinishing && !isDestroyed) {
+                                        runOnUiThread {
+                                            AlertDialog.Builder(this).apply {
+                                                setTitle(getString(R.string.success))
+                                                setMessage(getString(R.string.welcome_message))
+                                                setPositiveButton(getString(R.string.continue_message)) { _, _ ->
+                                                    startActivity(
+                                                        Intent(
+                                                            this@LoginActivity,
+                                                            RegistrasiAnakActivity::class.java
+                                                        )
+                                                    )
+                                                }
+                                                create()
+
+                                            }.apply {
+                                                setOnCancelListener {
+                                                    startActivity(
+                                                        Intent(
+                                                            this@LoginActivity,
+                                                            LoginActivity::class.java
+                                                        )
+                                                    )
+                                                }
+                                                show()
+                                            }
                                         }
-                                        create()
-                                        show()
-                                    }.apply {
-                                        setOnCancelListener {
-                                            startActivity(
-                                                Intent(
-                                                    this@LoginActivity, LoginActivity::class.java
-                                                )
-                                            )
-                                        }
-                                        show()
                                     }
                                 }
 
-                                is Result.Error ->{
+                                is Result.Error -> {
                                     binding.progressBar.visibility = View.GONE
-                                    AlertDialog.Builder(this).apply {
-                                        setTitle(getString(R.string.error_message))
-                                        setMessage(it.error)
-                                        setPositiveButton(getString(R.string.continue_message)) { _, _ -> }
-                                        create()
-                                        show()
+                                    if (!isFinishing && !isDestroyed) {
+                                        runOnUiThread {
+                                            AlertDialog.Builder(this).apply {
+                                                setTitle(getString(R.string.error_message))
+                                                setMessage(it.error)
+                                                setPositiveButton(getString(R.string.continue_message)) { _, _ -> }
+                                                create()
+                                                show()
+                                            }
+                                        }
                                     }
                                 }
                             }

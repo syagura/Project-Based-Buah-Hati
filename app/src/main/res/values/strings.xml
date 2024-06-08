@@ -89,4 +89,6 @@
     <string name="title_menu_4">Dapatkan Saran Nutrisi</string>
     <string name="desc_menu_4">Buah Hati juga memberikan rekomendari asupan nutrisi yang cocok untuk Si Kecil sesuai dengan kondisi pertumbuhannya.</string>
     <string name="start_now">Start Now</string>
+    <string name="logout">Logout</string>
+    <string name="are_your_sure">Are You Sure?</string>
 </resources>
