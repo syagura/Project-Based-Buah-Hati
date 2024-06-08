@@ -88,7 +88,7 @@ class LoginActivity : AppCompatActivity() {
                                                     startActivity(
                                                         Intent(
                                                             this@LoginActivity,
-                                                            RegistrasiAnakActivity::class.java
+                                                            MainActivity::class.java
                                                         )
                                                     )
                                                 }

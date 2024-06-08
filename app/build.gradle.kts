@@ -77,4 +77,8 @@ dependencies {
     implementation(libs.lifecycleLivedataKtx)
     implementation(libs.coroutinesCore)
     implementation(libs.coroutinesAndroid)
+
+    // Recycle View
+    implementation(libs.androidx.recyclerview)
+
 }

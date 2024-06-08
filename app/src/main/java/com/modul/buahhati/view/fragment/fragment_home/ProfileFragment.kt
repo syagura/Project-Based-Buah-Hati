@@ -10,14 +10,12 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.modul.buahhati.R
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.dataStore
 import com.modul.buahhati.di.Injection
 import com.modul.buahhati.view.ViewModelFactory
-import com.modul.buahhati.view.login.LoginActivity
 import com.modul.buahhati.view.welcome.WelcomeActivity
 
 class ProfileFragment : Fragment() {
