@@ -8,31 +8,31 @@ import androidx.recyclerview.widget.RecyclerView
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.databinding.RowItemProfileBinding
 
-class ProfileAdapter : ListAdapter<ChildRegisterResponse, ProfileAdapter.profieViewHolder>(DIFF_CALLBACK){
+class ProfileAdapter : ListAdapter<ChildRegisterResponse, ProfileAdapter.ProfileViewHolder>(DIFF_CALLBACK) {
 
-    class profieViewHolder(val binding: RowItemProfileBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(child : ChildRegisterResponse){
+    class ProfileViewHolder(val binding: RowItemProfileBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(child: ChildRegisterResponse) {
             binding.tvItemName.text = child.name
-            binding.tvNamaAnak.text = child.birthdate //ini tanggal lahir anak
-            binding.tvGolonganDarah.text = child.bloodType
-            binding.tvBeratBadan.text = child.bodyWeight.toString()
-            binding.tvTinggiBadan.text = child.bodyHeight.toString()
-            binding.tvLingkarKepala.text = child.headCircumference.toString()
+            binding.tvNamaAnak.text = "Tanggal Lahir: ${child.birthdate}"
+            binding.tvGolonganDarah.text = "Golongan Darah: ${child.bloodType}"
+            binding.tvBeratBadan.text = "Berat Badan: ${child.bodyWeight} kg"
+            binding.tvTinggiBadan.text = "Tinggi Badan: ${child.bodyHeight} cm"
+            binding.tvLingkarKepala.text = "Lingkar Kepala: ${child.headCircumference} cm"
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): profieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
         val binding = RowItemProfileBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return profieViewHolder(binding)
+        return ProfileViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: profieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProfileViewHolder, position: Int) {
         val currentItem = getItem(position)
         holder.bind(currentItem)
     }
 
-    companion object{
-        val DIFF_CALLBACK = object: DiffUtil.ItemCallback<ChildRegisterResponse>(){
+    companion object {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ChildRegisterResponse>() {
             override fun areItemsTheSame(
                 oldItem: ChildRegisterResponse,
                 newItem: ChildRegisterResponse
@@ -48,6 +48,4 @@ class ProfileAdapter : ListAdapter<ChildRegisterResponse, ProfileAdapter.profieV
             }
         }
     }
-
-
 }

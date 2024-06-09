@@ -7,13 +7,15 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "Session")
-class LoginPreference private constructor(private val dataStore: DataStore<Preferences>){
+class LoginPreference private constructor(private val dataStore: DataStore<Preferences>) {
 
-    suspend fun login(){
+    suspend fun login() {
         dataStore.edit { preferences ->
             preferences[LOGIN_KEY] = true
         }
@@ -21,7 +23,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
 
     fun getLoginStatus(): Flow<Boolean?> {
         return dataStore.data.map { preferences ->
-            preferences[LOGIN_KEY]
+            preferences[LOGIN_KEY] ?: false
         }
     }
 
@@ -29,6 +31,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = ""
             preferences[LOGIN_KEY] = false
+            preferences[USER_NAME_KEY] = ""
         }
     }
 
@@ -44,9 +47,27 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
-    fun getUserId() : Flow<String?> {
+    fun getUserId(): Flow<String?> {
         return dataStore.data.map { preferences ->
             preferences[USER_ID]
+        }
+    }
+
+    suspend fun svUserId(userId: String) {
+        dataStore.edit { preferences ->
+            preferences[USER_ID] = userId
+        }
+    }
+
+    fun getUserName(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[USER_NAME_KEY]
+        }
+    }
+
+    suspend fun svUserName(userName: String) {
+        dataStore.edit { preferences ->
+            preferences[USER_NAME_KEY] = userName
         }
     }
 
@@ -57,6 +78,7 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val USER_ID = stringPreferencesKey("user_id")
         private val LOGIN_KEY = booleanPreferencesKey("is_login")
+        private val USER_NAME_KEY = stringPreferencesKey("user_name")
 
         fun getInstance(dataStore: DataStore<Preferences>): LoginPreference {
             return INSTANCE ?: synchronized(this) {

@@ -8,6 +8,7 @@ import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
+import com.modul.buahhati.data.remote.response.UserResponse
 import com.modul.buahhati.data.remote.retrofit.ApiService
 import retrofit2.HttpException
 
@@ -34,18 +35,38 @@ class UserRepository (
     fun login(email: String, password: String): LiveData<Result<LoginResponse>> =
         liveData {
             emit(Result.Loading)
-            try{
+            try {
                 val response = apiService.login(email, password)
-                val user = response.data
-                if (user != null){
-
+                val tokenData = response.data
+                if (tokenData != null) {
+                    loginPreference.svToken(tokenData.accessToken ?: "")
+                    loginPreference.svUserName(response.user ?: "")
                     emit(Result.Success(response))
-                }else{
+                } else {
                     emit(Result.Error("There is something error"))
                 }
-            }catch (e: HttpException) {
-                val Json_inString = e.response()?.errorBody()?.string()
-                val error = Gson().fromJson(Json_inString, ErrorResponse::class.java)
+            } catch (e: HttpException) {
+                val jsonInString = e.response()?.errorBody()?.string()
+                val error = Gson().fromJson(jsonInString, ErrorResponse::class.java)
+                emit(Result.Error(error.message.toString()))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
+        }
+
+    fun getUserProfile(token: String): LiveData<Result<UserResponse>> =
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiService.getUserProfile("Bearer $token")
+                if (response.isSuccessful) {
+                    emit(Result.Success(response.body()!!))
+                } else {
+                    emit(Result.Error(response.message()))
+                }
+            } catch (e: HttpException) {
+                val jsonInString = e.response()?.errorBody()?.string()
+                val error = Gson().fromJson(jsonInString, ErrorResponse::class.java)
                 emit(Result.Error(error.message.toString()))
             } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
@@ -66,6 +87,25 @@ class UserRepository (
                 emit(Result.Error(e.message.toString()))
             }
         }
+
+    suspend fun getChildren(userId: String): Result<List<ChildRegisterResponse>> {
+        return try {
+            val response = apiService.getChildren(userId)
+            if (response.isSuccessful) {
+                val responseBody = response.body()
+                if (responseBody?.status == true) {
+                    Result.Success(responseBody.data)
+                } else {
+                    Result.Error(responseBody?.statusCode?.toString() ?: "Unknown error")
+                }
+            } else {
+                Result.Error(response.message())
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "Unknown error")
+        }
+    }
+
 
     companion object {
         @Volatile

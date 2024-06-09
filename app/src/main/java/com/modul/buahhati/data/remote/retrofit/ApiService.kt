@@ -3,9 +3,15 @@ package com.modul.buahhati.data.remote.retrofit
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
+import com.modul.buahhati.data.remote.response.ResponseWrapper
+import com.modul.buahhati.data.remote.response.UserResponse
+import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -38,4 +44,9 @@ interface ApiService {
         @Field("head_circumference") head_circumference:Int
     ):ChildRegisterResponse
 
+    @GET("child/{userId}")
+    suspend fun getChildren(@Path("userId") userId: String): Response<ResponseWrapper<List<ChildRegisterResponse>>>
+
+    @GET("user/profile")
+    suspend fun getUserProfile(@Header("Authorization") token: String): Response<UserResponse>
 }

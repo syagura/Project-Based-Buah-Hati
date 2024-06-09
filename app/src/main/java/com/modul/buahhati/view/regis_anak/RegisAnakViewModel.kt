@@ -2,6 +2,7 @@ package com.modul.buahhati.view.regis_anak
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.repository.UserRepository
@@ -20,5 +21,10 @@ class RegisAnakViewModel(
             emit(userId)
         }
     }
+
+    fun getToken(): LiveData<String?> {
+        return preference.getToken().asLiveData()
+    }
+
 }
 

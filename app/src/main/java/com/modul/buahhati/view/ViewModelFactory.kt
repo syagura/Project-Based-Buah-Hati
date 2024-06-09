@@ -25,7 +25,7 @@ class ViewModelFactory(
             return LoginViewModel(userRepository,prereference) as T
         }
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)){
-            return ProfileViewModel(prereference) as T
+            return ProfileViewModel(prereference,userRepository) as T
         }
         if (modelClass.isAssignableFrom(RegisAnakViewModel::class.java)){
             return RegisAnakViewModel(userRepository, prereference) as T
