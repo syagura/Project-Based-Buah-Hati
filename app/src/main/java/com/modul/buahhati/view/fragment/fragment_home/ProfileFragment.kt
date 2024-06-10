@@ -1,5 +1,6 @@
 package com.modul.buahhati.view.fragment.fragment_home
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -50,7 +51,7 @@ class ProfileFragment : Fragment() {
         loginPreference = LoginPreference.getInstance(requireContext().dataStore)
         val factory = ViewModelFactory(Injection.provideRepository(requireContext()), loginPreference)
         viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
-        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        sharedViewModel = ViewModelProvider(requireActivity(), factory).get(SharedViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
         setupRecyclerView(view)
@@ -93,29 +94,13 @@ class ProfileFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_profile)
         profileAdapter = ProfileAdapter()
         recyclerView.adapter = profileAdapter
-        recyclerView.layoutManager = LinearLayoutManager(context)  // Tambahkan LayoutManager di sini
+        recyclerView.layoutManager = LinearLayoutManager(context)
     }
 
     private fun setupObserver() {
         viewModel.getUserId().observe(viewLifecycleOwner) { userId ->
             userId?.let {
-                viewModel.getChildren(it).observe(viewLifecycleOwner) { result ->
-                    when (result) {
-                        is Result.Loading -> {
-                            progressBar.visibility = View.VISIBLE
-                            Log.d("ProfileFragment", "Loading children data")
-                        }
-                        is Result.Success -> {
-                            progressBar.visibility = View.GONE
-                            Log.d("ProfileFragment", "Children data loaded successfully: ${result.data}")
-                            profileAdapter.submitList(result.data)
-                        }
-                        is Result.Error -> {
-                            progressBar.visibility = View.GONE
-                            Log.e("ProfileFragment", "Error loading children data: ${result.error}")
-                        }
-                    }
-                }
+                loadChildrenData(it)
             }
         }
         viewModel.getUserName().observe(viewLifecycleOwner) { userName ->
@@ -123,31 +108,22 @@ class ProfileFragment : Fragment() {
                 tvNameUser.text = it
             }
         }
+    }
 
-        sharedViewModel.updateProfile.observe(viewLifecycleOwner) { shouldUpdate ->
-            if (shouldUpdate) {
-                viewModel.getUserId().observe(viewLifecycleOwner) { userId ->
-                    userId?.let {
-                        viewModel.getChildren(it).observe(viewLifecycleOwner) { result ->
-                            when (result) {
-                                is Result.Loading -> {
-                                    progressBar.visibility = View.VISIBLE
-                                    Log.d("ProfileFragment", "Loading children data after update")
-                                }
-                                is Result.Success -> {
-                                    progressBar.visibility = View.GONE
-                                    Log.d("ProfileFragment", "Children data loaded successfully after update: ${result.data}")
-                                    profileAdapter.submitList(result.data)
-                                }
-                                is Result.Error -> {
-                                    progressBar.visibility = View.GONE
-                                    Log.e("ProfileFragment", "Error loading children data after update: ${result.error}")
-                                }
-                            }
-                        }
-                    }
+    private fun loadChildrenData(userId: String) {
+        viewModel.getChildren(userId).observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Result.Loading -> {
+                    progressBar.visibility = View.VISIBLE
                 }
-                sharedViewModel.setUpdateProfile(false) // Reset signal
+                is Result.Success -> {
+                    progressBar.visibility = View.GONE
+                    profileAdapter.submitList(result.data)
+                }
+                is Result.Error -> {
+                    progressBar.visibility = View.GONE
+                    Log.e("ProfileFragment", "Error loading children data: ${result.error}")
+                }
             }
         }
     }
@@ -155,7 +131,27 @@ class ProfileFragment : Fragment() {
     private fun buttonAddAnak(view: View) {
         view.findViewById<Button>(R.id.bt_add_anak).setOnClickListener {
             val intent = Intent(activity, RegistrasiAnakActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, REQUEST_CODE_REGISTRASI_ANAK)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_REGISTRASI_ANAK && resultCode == Activity.RESULT_OK) {
+            val isUpdated = data?.getBooleanExtra("isUpdated", false) ?: false
+            if (isUpdated) {
+                progressBar.visibility = View.VISIBLE
+                viewModel.getUserId().observe(viewLifecycleOwner) { userId ->
+                    userId?.let {
+                        loadChildrenData(it)
+                    }
+                }
+            }
+        }
+    }
+
+    companion object {
+        const val REQUEST_CODE_REGISTRASI_ANAK = 1
+    }
 }
+

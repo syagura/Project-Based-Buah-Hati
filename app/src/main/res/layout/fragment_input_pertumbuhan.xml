@@ -20,7 +20,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            android:background="@drawable/card_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +98,6 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <Button
             android:id="@+id/btnSave_tumbuh"
             android:layout_width="match_parent"
@@ -104,7 +106,7 @@
             android:backgroundTint="@color/pink"
             android:onClick="simpanDataPertumbuhan"
             android:text="@string/sv_data_pertumbuhan"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.modul.buahhati.view.regis_anak
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
@@ -28,6 +29,7 @@ class RegistrasiAnakActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrasiAnakBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.progressBar.visibility = View.GONE
 
@@ -41,7 +43,7 @@ class RegistrasiAnakActivity : AppCompatActivity() {
         )
 
         viewModel = ViewModelProvider(this, factory)[RegisAnakViewModel::class.java]
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+        sharedViewModel = ViewModelProvider(this, factory).get(SharedViewModel::class.java)
     }
 
     fun showDatePicker(view: View) {
@@ -91,9 +93,10 @@ class RegistrasiAnakActivity : AppCompatActivity() {
                             }
                             is Result.Success -> {
                                 binding.progressBar.visibility = View.GONE
-                                // Sinyal fragment profile untuk mengupdate data
-                                sharedViewModel.setUpdateProfile(true)
-                                finish() // Menutup aktivitas dan kembali ke fragment profile
+                                val returnIntent = Intent()
+                                returnIntent.putExtra("isUpdated", true)
+                                setResult(Activity.RESULT_OK, returnIntent)
+                                finish()
                             }
                             is Result.Error -> {
                                 binding.progressBar.visibility = View.GONE

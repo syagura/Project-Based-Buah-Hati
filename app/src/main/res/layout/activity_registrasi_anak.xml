@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/pink"
     tools:context=".view.regis_anak.RegistrasiAnakActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#A2E7F5"
+        android:background="@color/pink"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,7 +21,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,15 +40,12 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-
-
                 <EditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:hint="@string/string_nama_anak_regis"
-                    />
+                    android:hint="@string/string_nama_anak_regis" />
 
                 <EditText
                     android:id="@+id/etDateOfBirth"
@@ -134,14 +133,12 @@
                     android:entries="@array/blood_types"
                     android:padding="12dp" />
 
-                <!-- Elemen on click diganti sesuai dengan fungsi untuk simpan data anak -->
-
                 <Button
+                    android:id="@+id/btn_register_anak"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:backgroundTint="@color/pink"
-                    android:id="@+id/btn_register_anak"
                     android:text="@string/simpan_data"
                     android:textColor="#ffffff" />
             </LinearLayout>
