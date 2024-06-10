@@ -76,6 +76,21 @@ class ViewChartActivity : AppCompatActivity() {
             benchmarkData += CustomDataEntry("22", 14.7, 9.4)
             benchmarkData += CustomDataEntry("23", 15.0, 9.5)
             benchmarkData += CustomDataEntry("24", 15.5, 9.7)
+            benchmarkData += CustomDataEntry("25", 15.6, 9.8)
+            benchmarkData += CustomDataEntry("26", 15.8, 10.0)
+            benchmarkData += CustomDataEntry("27", 16.1, 10.1)
+            benchmarkData += CustomDataEntry("28", 16.4, 10.2)
+            benchmarkData += CustomDataEntry("29", 16.6, 10.4)
+            benchmarkData += CustomDataEntry("30", 16.8, 10.5)
+            benchmarkData += CustomDataEntry("31", 17.1, 10.7)
+            benchmarkData += CustomDataEntry("32", 17.4, 10.8)
+            benchmarkData += CustomDataEntry("33", 17.6, 10.9)
+            benchmarkData += CustomDataEntry("34", 17.8, 11.0)
+            benchmarkData += CustomDataEntry("35", 18.1, 11.2)
+            benchmarkData += CustomDataEntry("36", 18.3, 11.3)
+
+
+
 //        }else if(viewLingkarKepala == true){
 //            binding.titleStat.setText("Lingkar Kepala")
 //        }else{

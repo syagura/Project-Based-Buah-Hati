@@ -8,22 +8,26 @@ import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
-import com.modul.buahhati.data.remote.response.UserResponse
 import com.modul.buahhati.data.remote.retrofit.ApiService
 import retrofit2.HttpException
 
-class UserRepository (
+class UserRepository(
     private var apiService: ApiService,
     private var loginPreference: LoginPreference
-){
+) {
 
-    fun register(name:String, username:String, email:String, password:String):LiveData<Result<ErrorResponse>> =
+    fun register(
+        name: String,
+        username: String,
+        email: String,
+        password: String
+    ): LiveData<Result<ErrorResponse>> =
         liveData {
             emit(Result.Loading)
             try {
-                val response = apiService.register(name,username, email, password)
+                val response = apiService.register(name, username, email, password)
                 emit(Result.Success(response))
-            }catch (e : HttpException){
+            } catch (e: HttpException) {
                 val json_inString = e.response()?.errorBody()?.string()
                 val error = Gson().fromJson(json_inString, ErrorResponse::class.java)
                 emit(Result.Error(error.message.toString()))
@@ -54,32 +58,32 @@ class UserRepository (
             }
         }
 
-    fun getUserProfile(token: String): LiveData<Result<UserResponse>> =
+
+    fun regisAnak(
+        user_id: String,
+        name: String,
+        birthdate: String,
+        gender: String,
+        blood_type: String,
+        body_weight: Int,
+        body_height: Int,
+        head_circumference: Int
+    ): LiveData<Result<ChildRegisterResponse>> =
         liveData {
             emit(Result.Loading)
             try {
-                val response = apiService.getUserProfile("Bearer $token")
-                if (response.isSuccessful) {
-                    emit(Result.Success(response.body()!!))
-                } else {
-                    emit(Result.Error(response.message()))
-                }
-            } catch (e: HttpException) {
-                val jsonInString = e.response()?.errorBody()?.string()
-                val error = Gson().fromJson(jsonInString, ErrorResponse::class.java)
-                emit(Result.Error(error.message.toString()))
-            } catch (e: Exception) {
-                emit(Result.Error(e.message.toString()))
-            }
-        }
-
-    fun regisAnak(user_id:String, name:String, birthdate:String, gender:String, blood_type:String, body_weight:Int, body_height:Int, head_circumference:Int) : LiveData<Result<ChildRegisterResponse>> =
-        liveData {
-            emit(Result.Loading)
-            try{
-                val response = apiService.childRegister(user_id, name, birthdate, gender, blood_type, body_weight, body_height, head_circumference)
+                val response = apiService.childRegister(
+                    user_id,
+                    name,
+                    birthdate,
+                    gender,
+                    blood_type,
+                    body_weight,
+                    body_height,
+                    head_circumference
+                )
                 emit(Result.Success(response))
-            }catch (e : HttpException){
+            } catch (e: HttpException) {
                 val json_inString = e.response()?.errorBody()?.string()
                 val error = Gson().fromJson(json_inString, ErrorResponse::class.java)
                 emit(Result.Error(error.message.toString()))

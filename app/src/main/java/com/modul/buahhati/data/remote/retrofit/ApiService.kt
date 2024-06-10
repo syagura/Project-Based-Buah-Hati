@@ -4,7 +4,6 @@ import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
 import com.modul.buahhati.data.remote.response.ResponseWrapper
-import com.modul.buahhati.data.remote.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -46,7 +45,4 @@ interface ApiService {
 
     @GET("child/{userId}")
     suspend fun getChildren(@Path("userId") userId: String): Response<ResponseWrapper<List<ChildRegisterResponse>>>
-
-    @GET("user/profile")
-    suspend fun getUserProfile(@Header("Authorization") token: String): Response<UserResponse>
 }

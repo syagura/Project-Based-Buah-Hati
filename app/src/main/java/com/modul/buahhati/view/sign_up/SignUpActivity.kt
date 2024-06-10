@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -33,6 +35,7 @@ class SignUpActivity : AppCompatActivity() {
         setupView()
         signUp()
         playAnimation()
+        syncNameAndUsername()
     }
 
     private fun setupView() {
@@ -113,6 +116,18 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun syncNameAndUsername() {
+        binding.edRegisterName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                binding.edRegisterUsername.setText(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun playAnimation() {
