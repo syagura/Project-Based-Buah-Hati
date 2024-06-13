@@ -7,6 +7,7 @@ import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.ArticleResponse
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
+import com.modul.buahhati.data.remote.response.DataItem
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
 import com.modul.buahhati.data.remote.retrofit.ApiService
@@ -112,11 +113,12 @@ class UserRepository(
         }
     }
 
-    fun getArticles(): LiveData<Result<List<ArticleResponse>>> = liveData(Dispatchers.IO) {
+    fun getArticles(): LiveData<Result<List<DataItem?>>> = liveData(Dispatchers.IO) {
         emit(Result.Loading)
         try {
             val response = apiService.getArticles()
-            emit(Result.Success(response))
+            val articles = response.data ?: emptyList()
+            emit(Result.Success(articles))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }

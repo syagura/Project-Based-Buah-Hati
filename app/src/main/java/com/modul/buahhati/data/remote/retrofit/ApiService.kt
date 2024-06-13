@@ -48,5 +48,5 @@ interface ApiService {
     suspend fun getChildren(@Path("userId") userId: String): Response<ResponseWrapper<List<ChildRegisterResponse>>>
 
     @GET("article")
-    suspend fun getArticles(): List<ArticleResponse>
+    suspend fun getArticles(): ArticleResponse
 }

@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#ff5580</color>
     <color name="navy">#2D3D4F</color>
+    <color name="primaryColor">#ff5580</color>
+    <color name="primaryDarkColor">#FF5C8D</color>
+    <color name="accentColor">#FF597B</color>
+    <color name="menuTextColor">#FFFFFF</color>
+    <color name="menuOverflowColor">#FFFFFF</color>
 </resources>

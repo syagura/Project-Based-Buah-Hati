@@ -11,7 +11,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:src="@android:drawable/ic_menu_report_image" />
+        android:src="@drawable/preview_image_article" />
 
     <TextView
         android:id="@+id/tv_informasi"
