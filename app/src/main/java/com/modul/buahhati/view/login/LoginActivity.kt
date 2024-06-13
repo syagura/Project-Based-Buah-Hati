@@ -89,7 +89,6 @@ class LoginActivity : AppCompatActivity() {
                             is Result.Success -> {
                                 binding.progressBar.visibility = View.GONE
                                 val loginResult = result.data
-                                // Ambil accessToken dan userId dari loginResult.data
                                 val token = loginResult.data?.accessToken ?: ""
                                 val userId = loginResult.id ?: ""
                                 viewModel.saveState(token, userId)
