@@ -91,6 +91,7 @@ export const createSession = async (request: Request, h: ResponseToolkit) => {
         statusCode: 200,
         message: 'Login user success',
         id: user.user_id,
+        user: user.name,
         data: { accessToken, refreshToken }
       })
       .code(200)
