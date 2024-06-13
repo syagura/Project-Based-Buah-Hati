@@ -1,6 +1,7 @@
 package com.modul.buahhati.data.remote
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -61,13 +62,16 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
 
     fun getUserName(): Flow<String?> {
         return dataStore.data.map { preferences ->
-            preferences[USER_NAME_KEY]
+            val userName = preferences[USER_NAME_KEY]
+            Log.d("LoginPreference", "Retrieved User Name: $userName")
+            userName
         }
     }
 
     suspend fun svUserName(userName: String) {
         dataStore.edit { preferences ->
             preferences[USER_NAME_KEY] = userName
+            Log.d("LoginPreference", "Saved User Name: $userName")
         }
     }
 

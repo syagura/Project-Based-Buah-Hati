@@ -92,7 +92,8 @@ class LoginActivity : AppCompatActivity() {
                                 // Ambil accessToken dan userId dari loginResult.data
                                 val token = loginResult.data?.accessToken ?: ""
                                 val userId = loginResult.id ?: ""
-                                viewModel.saveState(token, userId)
+                                val user = loginResult.user ?: ""
+                                viewModel.saveState(token, userId, user)
                                 startActivity(Intent(this, MainActivity::class.java))
                                 finish()
                             }

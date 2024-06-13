@@ -17,17 +17,22 @@ class LoginViewModel(
     fun login(emailInput: String, passwordInput: String) =
         userRepository.login(emailInput, passwordInput)
 
-    fun saveState(token: String, userId: String) {
+    fun saveState(token: String, userId: String, userName: String) {
         viewModelScope.launch {
             loginPreference.svToken(token)
             loginPreference.svUserId(userId)
+            loginPreference.svUserName(userName)
             loginPreference.login()
+            Log.d("LoginViewModel", "Saving Token: $token, User ID: $userId, User Name: $userName")
             // Tambahkan log untuk memastikan token dan ID pengguna tersimpan
             loginPreference.getToken().collect { savedToken ->
                 Log.d("LoginViewModel", "Saved Token: $savedToken")
             }
             loginPreference.getUserId().collect { savedUserId ->
                 Log.d("LoginViewModel", "Saved User ID: $savedUserId")
+            }
+            loginPreference.getUserName().collect { savedUserName ->
+                Log.d("LoginViewModel", "Saved User Name: $savedUserName")
             }
             loginPreference.getLoginStatus().collect { isLoggedIn ->
                 Log.d("LoginViewModel", "Is Logged In: $isLoggedIn")

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.asLiveData
 import com.modul.buahhati.R
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.dataStore
@@ -57,10 +58,8 @@ class HomeFragment : Fragment() {
 
         tvGreeting = binding.greeting
 
-        profileViewModel.getUserName().observe(viewLifecycleOwner) { userName ->
-            userName?.let {
-                tvGreeting.text = "Hello, $it"
-            }
+        loginPreference.getUserName().asLiveData().observe(viewLifecycleOwner) { userName ->
+            tvGreeting.text = "Hello, $userName!"
         }
     }
 
