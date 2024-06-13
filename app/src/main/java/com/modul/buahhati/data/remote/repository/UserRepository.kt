@@ -5,10 +5,12 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
+import com.modul.buahhati.data.remote.response.ArticleResponse
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
 import com.modul.buahhati.data.remote.retrofit.ApiService
+import kotlinx.coroutines.Dispatchers
 import retrofit2.HttpException
 
 class UserRepository(
@@ -107,6 +109,16 @@ class UserRepository(
             }
         } catch (e: Exception) {
             Result.Error(e.message ?: "Unknown error")
+        }
+    }
+
+    fun getArticles(): LiveData<Result<List<ArticleResponse>>> = liveData(Dispatchers.IO) {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getArticles()
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
         }
     }
 
