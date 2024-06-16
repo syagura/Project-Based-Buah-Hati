@@ -27,10 +27,6 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(HomeFragment(), "HomeFragment")
                     true
                 }
-                R.id.menu_2 -> {
-                    replaceFragment(InputPertumbuhanFragment(), "InputPertumbuhanFragment")
-                    true
-                }
                 R.id.menu_3 -> {
                     replaceFragment(ProfileFragment(), "ProfileFragment")
                     true

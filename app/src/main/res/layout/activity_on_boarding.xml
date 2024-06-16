@@ -176,7 +176,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="parent"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/navy" />
+        app:tint="@color/pink" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu2"
@@ -190,7 +190,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu1"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/navy" />
+        app:tint="@color/pink" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu3"
@@ -204,7 +204,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/navy" />
+        app:tint="@color/pink" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/menu4"
@@ -218,7 +218,7 @@
         app:layout_constraintTop_toTopOf="@+id/menu3"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_circle_24"
-        app:tint="@color/navy" />
+        app:tint="@color/pink" />
 
     <Button
         android:id="@+id/button"

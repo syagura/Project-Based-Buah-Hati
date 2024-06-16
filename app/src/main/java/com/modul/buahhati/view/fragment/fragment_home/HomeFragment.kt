@@ -8,10 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.cardview.widget.CardView
+import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.modul.buahhati.R
 import com.modul.buahhati.adapter.ArticleAdapter
@@ -22,7 +23,7 @@ import com.modul.buahhati.databinding.FragmentHomeBinding
 import com.modul.buahhati.di.Injection
 import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.view.article.DetailArticleActivity
-import com.modul.buahhati.view.view_chart.ViewChartActivity
+import com.modul.buahhati.view.history.HistoryActivity
 
 class HomeFragment : Fragment() {
 
@@ -30,10 +31,10 @@ class HomeFragment : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var loginPreference: LoginPreference
-    private lateinit var pageTB: CardView
-    private lateinit var pageBB: CardView
     private lateinit var tvGreeting: TextView
     private lateinit var adapter: ArticleAdapter
+    private lateinit var btnAddData: ImageButton
+    private lateinit var btnRiwayat: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,21 +50,6 @@ class HomeFragment : Fragment() {
         val factory = ViewModelFactory(Injection.provideRepository(requireContext()), loginPreference)
         profileViewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
         homeViewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
-
-        pageTB = requireView().findViewById(R.id.btnTB)
-        pageBB = requireView().findViewById(R.id.btnBB)
-
-        pageBB.setOnClickListener{
-            val viewBB = Intent(requireContext().applicationContext, ViewChartActivity::class.java)
-            viewBB.putExtra(beratBadan, true)
-            startActivity(viewBB)
-        }
-
-        pageTB.setOnClickListener{
-            val viewTB = Intent(requireContext().applicationContext, ViewChartActivity::class.java)
-            viewTB.putExtra(tinggiBadan, true)
-            startActivity(viewTB)
-        }
 
         tvGreeting = binding.greeting
 
@@ -98,6 +84,29 @@ class HomeFragment : Fragment() {
                 }
             }
         })
+
+        buttonAddData()
+        buttonRiwayat()
+    }
+
+    private fun buttonAddData(){
+        btnAddData = binding.root.findViewById(R.id.btn_add_data)
+        btnAddData.setOnClickListener {
+            // Handle button click to replace fragment
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.layout_frame, InputPertumbuhanFragment())
+                .addToBackStack(null) // Add this transaction to the back stack
+                .commit()
+        }
+
+    }
+
+    private fun buttonRiwayat(){
+        btnRiwayat = binding.root.findViewById(R.id.btn_riwayat)
+        btnRiwayat.setOnClickListener {
+            val intent = Intent(requireContext(), HistoryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
@@ -105,5 +114,4 @@ class HomeFragment : Fragment() {
         const val beratBadan: String = "ViewBB"
         const val lingkarKepala: String = "ViewLK"
     }
-
 }

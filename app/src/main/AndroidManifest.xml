@@ -27,7 +27,7 @@
             android:name=".view.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.view_chart.ViewChartActivity"
+            android:name=".view.view_result.ViewResultActivity"
             android:exported="false" />
         <activity
             android:name=".view.regis_anak.RegistrasiAnakActivity"

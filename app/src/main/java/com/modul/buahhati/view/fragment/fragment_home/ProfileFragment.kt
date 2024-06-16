@@ -7,12 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
@@ -57,37 +55,12 @@ class ProfileFragment : Fragment() {
         setupRecyclerView(view)
         setupObserver()
         buttonAddAnak(view)
+        buttonLogout(view)
 
         tvNameUser = view.findViewById(R.id.tv_name_user)
         progressBar = view.findViewById(R.id.progressBar)
 
         return view
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.top_nav_logout, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_logout -> {
-                AlertDialog.Builder(activity).apply {
-                    setTitle(getString(R.string.logout))
-                    setMessage(getString(R.string.are_your_sure))
-                    setPositiveButton(getString(R.string.continue_message)) { _, _ ->
-                        viewModel.logout()
-                        val intent = Intent(activity, WelcomeActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                    }
-                    create()
-                    show()
-                }
-                true
-            }
-            else -> false
-        }
     }
 
     private fun setupRecyclerView(view: View) {
@@ -129,9 +102,26 @@ class ProfileFragment : Fragment() {
     }
 
     private fun buttonAddAnak(view: View) {
-        view.findViewById<Button>(R.id.bt_add_anak).setOnClickListener {
+        view.findViewById<ImageButton>(R.id.bt_add_anak).setOnClickListener {
             val intent = Intent(activity, RegistrasiAnakActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_REGISTRASI_ANAK)
+        }
+    }
+
+    private fun buttonLogout(view: View) {
+        view.findViewById<ImageButton>(R.id.ib_logout).setOnClickListener {
+            AlertDialog.Builder(activity).apply {
+                setTitle(getString(R.string.logout))
+                setMessage(getString(R.string.are_your_sure))
+                setPositiveButton(getString(R.string.continue_message)) { _, _ ->
+                    viewModel.logout()
+                    val intent = Intent(activity, WelcomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                create()
+                show()
+            }
         }
     }
 

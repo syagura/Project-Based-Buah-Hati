@@ -64,9 +64,9 @@
 
                     <!-- ImageButton added below tv_name_user -->
                     <ImageButton
-                        android:id="@+id/ib_edit_profile"
-                        android:layout_width="86dp"
-                        android:layout_height="30dp"
+                        android:id="@+id/ib_logout"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/bt_logout"/>
