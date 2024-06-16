@@ -60,8 +60,18 @@
                             android:textColor="@color/black"
                             android:textSize="20sp"
                             android:textStyle="bold" />
-
                     </LinearLayout>
+
+                    <!-- ImageButton added below tv_name_user -->
+                    <ImageButton
+                        android:id="@+id/ib_edit_profile"
+                        android:layout_width="86dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bt_logout"/>
+                    <!-- End of ImageButton -->
+
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -104,13 +114,13 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <Button
+            <ImageButton
                 android:id="@+id/bt_add_anak"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="280dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:backgroundTint="@color/pink"
-                android:text="@string/bt_add_anak" />
+                android:background="@drawable/bt_add_anak" />
 
         </LinearLayout>
 
