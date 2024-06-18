@@ -8,6 +8,12 @@
         <item>AB</item>
     </string-array>
 
+    <string-array name="gender">
+        <item>Pilih Jenis Kelamin</item>
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+
     <string-array name="profile_choose">
         <item>Nama Anam</item>
         <item>Nama Anam</item>

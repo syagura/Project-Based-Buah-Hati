@@ -1,60 +1,50 @@
-package com.modul.buahhati.view.fragment.fragment_home
+package com.modul.buahhati.view.input_pertumbuhan
 
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.modul.buahhati.R
 import com.modul.buahhati.data.remote.LoginPreference
-import com.modul.buahhati.databinding.FragmentInputPertumbuhanBinding
-import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.dataStore
+import com.modul.buahhati.databinding.ActivityInputPertumbuhanBinding
 import com.modul.buahhati.view.ViewModelFactory
+import com.modul.buahhati.data.remote.Result
+import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
+import com.modul.buahhati.view.login.LoginActivity
 import com.modul.buahhati.view.view_result.ViewResultActivity
 
-class InputPertumbuhanFragment : Fragment() {
-
-    private lateinit var binding: FragmentInputPertumbuhanBinding
-    private lateinit var viewModel: InputViewModel
+class InputPertumbuhan : AppCompatActivity() {
+    private lateinit var binding: ActivityInputPertumbuhanBinding
+    private lateinit var viewModel: InputPertumbuhanViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = FragmentInputPertumbuhanBinding.inflate(layoutInflater)
+        binding = ActivityInputPertumbuhanBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.progressBar.visibility = View.GONE
 
         setupViewModel()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentInputPertumbuhanBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.progressBar.visibility = View.GONE
+        addDataPertumbuhan()
         setDatePicker()
-        addAnalisisAnak()
     }
 
     private fun setupViewModel() {
         val factory: ViewModelFactory = ViewModelFactory.getInstance(
-            requireContext(), LoginPreference.getInstance(requireContext().dataStore)
+            this, LoginPreference.getInstance(dataStore)
         )
 
-        viewModel = ViewModelProvider(this, factory)[InputViewModel::class.java]
+        viewModel = ViewModelProvider(this, factory)[InputPertumbuhanViewModel::class.java]
     }
 
-    private fun addAnalisisAnak() {
+
+    private fun addDataPertumbuhan() {
         binding.btnSaveTumbuh.setOnClickListener {
             val date = binding.etTglTumbuh.text.toString()
             val age = binding.etUmurTumbuh.text.toString().toIntOrNull() ?: 0
@@ -64,17 +54,16 @@ class InputPertumbuhanFragment : Fragment() {
             val headCircumference = binding.etLingkarTumbuh.text.toString().toIntOrNull() ?: 0
 
             if (date.isEmpty() || age == 0 || gender.isEmpty() || weight == 0 || height == 0 || headCircumference == 0) {
-                Toast.makeText(requireContext(), "Data tidak boleh kosong", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
 
-            viewModel.getChildID().observe(viewLifecycleOwner) { childID ->
+            viewModel.getChildID().observe(this) { childID ->
                 if (childID != null) {
-
                     viewModel.addData(
                         childID, date, age, gender, weight, height, headCircumference
-                    ).observe(viewLifecycleOwner) { result ->
+                    ).observe(this) { result ->
                         when (result) {
                             is Result.Loading -> {
                                 binding.progressBar.visibility = View.VISIBLE
@@ -83,18 +72,18 @@ class InputPertumbuhanFragment : Fragment() {
                             is Result.Success -> {
                                 binding.progressBar.visibility = View.GONE
                                 Toast.makeText(
-                                    requireContext(),
+                                    this,
                                     "Data Pertumbuhan Berhasil Disimpan",
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 val intent =
-                                    Intent(requireContext(), ViewResultActivity::class.java)
+                                    Intent(this, ViewResultActivity::class.java)
                                 startActivity(intent)
                             }
 
                             is Result.Error -> {
                                 binding.progressBar.visibility = View.GONE
-                                AlertDialog.Builder(requireContext()).apply {
+                                AlertDialog.Builder(this).apply {
                                     setTitle(getString(R.string.error_message))
                                     setMessage(result.error)
                                     setPositiveButton(getString(R.string.continue_message)) { _, _ -> }
@@ -105,10 +94,19 @@ class InputPertumbuhanFragment : Fragment() {
 
                             else -> {
                                 binding.progressBar.visibility = View.GONE
-                                Toast.makeText(requireContext(), "Unknown error occurred.", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, "Unknown error occurred.", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                     }
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Child ID not found.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    startActivity(Intent(this, HomeFragment::class.java))
+                    finish()
                 }
             }
         }
@@ -127,7 +125,7 @@ class InputPertumbuhanFragment : Fragment() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(
-            requireContext(),
+            this,
             { _, year, month, day ->
                 val selectedDate = "$year-${month + 1}-$day"
                 binding.etTglTumbuh.setText(selectedDate)
@@ -136,3 +134,5 @@ class InputPertumbuhanFragment : Fragment() {
         datePickerDialog.show()
     }
 }
+
+

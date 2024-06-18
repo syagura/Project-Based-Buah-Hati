@@ -12,7 +12,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.firstOrNull
 import android.util.Log
 
-class ProfileViewModel(private val preference: LoginPreference, private val userRepository: UserRepository) : ViewModel() {
+class ProfileViewModel(
+    private val preference: LoginPreference,
+    private val userRepository: UserRepository
+) : ViewModel() {
 
     fun logout() {
         viewModelScope.launch {

@@ -54,6 +54,18 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         }
     }
 
+    fun getchildId(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[CHILD_ID]
+        }
+    }
+
+    fun getAnalysisId(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[ANALYSIS_ID]
+        }
+    }
+
     suspend fun svUserId(userId: String) {
         dataStore.edit { preferences ->
             preferences[USER_ID] = userId
@@ -83,6 +95,8 @@ class LoginPreference private constructor(private val dataStore: DataStore<Prefe
         private val USER_ID = stringPreferencesKey("user_id")
         private val LOGIN_KEY = booleanPreferencesKey("is_login")
         private val USER_NAME_KEY = stringPreferencesKey("user_name")
+        private val CHILD_ID = stringPreferencesKey("child_id")
+        private val ANALYSIS_ID = stringPreferencesKey("analysis_id")
 
         fun getInstance(dataStore: DataStore<Preferences>): LoginPreference {
             return INSTANCE ?: synchronized(this) {

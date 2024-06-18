@@ -1,5 +1,7 @@
 package com.modul.buahhati.data.remote.retrofit
 
+import com.modul.buahhati.data.remote.response.AnalysisResponse
+import com.modul.buahhati.data.remote.response.AnalysisResultResponse
 import com.modul.buahhati.data.remote.response.ArticleResponse
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.ErrorResponse
@@ -49,4 +51,20 @@ interface ApiService {
 
     @GET("article")
     suspend fun getArticles(): ArticleResponse
+
+    @FormUrlEncoded
+    @POST("api/model/analyze")
+    suspend fun analisisPertumbuhan(
+        @Field("child_id") child_id : String,
+        @Field("date") date : String,
+        @Field("age") age : Int,
+        @Field("gender") gender : String,
+        @Field("weight") weight: Int,
+        @Field("height") height: Int,
+        @Field("headCircumference") headCircumference: Int
+    ):AnalysisResponse
+
+    @GET("/analyze/{analysis_id}")
+    suspend fun getAnalysis(@Path("analysis_id") analysis_id : String): Response<ResponseWrapper<List<AnalysisResultResponse>>>
+
 }

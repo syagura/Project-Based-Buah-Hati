@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BuahHati"
         tools:targetApi="31">
         <activity
+            android:name=".view.input_pertumbuhan.InputPertumbuhan"
+            android:exported="false" />
+        <activity
             android:name=".view.article.DetailArticleActivity"
             android:exported="false" />
         <activity

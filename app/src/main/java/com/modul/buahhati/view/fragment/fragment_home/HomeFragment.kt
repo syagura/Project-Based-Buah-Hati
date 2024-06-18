@@ -24,6 +24,7 @@ import com.modul.buahhati.di.Injection
 import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.view.article.DetailArticleActivity
 import com.modul.buahhati.view.history.HistoryActivity
+import com.modul.buahhati.view.input_pertumbuhan.InputPertumbuhan
 
 class HomeFragment : Fragment() {
 
@@ -89,17 +90,15 @@ class HomeFragment : Fragment() {
         buttonRiwayat()
     }
 
-    private fun buttonAddData(){
+    private fun buttonAddData() {
         btnAddData = binding.root.findViewById(R.id.btn_add_data)
         btnAddData.setOnClickListener {
-            // Handle button click to replace fragment
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.layout_frame, InputPertumbuhanFragment())
-                .addToBackStack(null) // Add this transaction to the back stack
-                .commit()
+            // Handle button click to start InputPertumbuhan activity
+            val intent = Intent(requireContext(), InputPertumbuhan::class.java)
+            startActivity(intent)
         }
-
     }
+
 
     private fun buttonRiwayat(){
         btnRiwayat = binding.root.findViewById(R.id.btn_riwayat)
@@ -109,9 +108,4 @@ class HomeFragment : Fragment() {
         }
     }
 
-    companion object {
-        const val tinggiBadan: String = "ViewTB"
-        const val beratBadan: String = "ViewBB"
-        const val lingkarKepala: String = "ViewLK"
-    }
 }

@@ -5,7 +5,8 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
-import com.modul.buahhati.data.remote.response.ArticleResponse
+import com.modul.buahhati.data.remote.response.AnalysisResponse
+import com.modul.buahhati.data.remote.response.AnalysisResultResponse
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.DataItem
 import com.modul.buahhati.data.remote.response.ErrorResponse
@@ -124,14 +125,58 @@ class UserRepository(
         }
     }
 
-
-    companion object {
-        @Volatile
-        private var instance: UserRepository? = null
-
-        fun getInstance(apiService: ApiService, preferences: LoginPreference): UserRepository =
-            instance ?: synchronized(this) {
-                instance ?: UserRepository(apiService, preferences).also { instance = it }
-            }
+    fun addDataPertumbuhan(
+        child_id: String,
+        date: String,
+        age: Int,
+        gender: String,
+        weight: Int,
+        height: Int,
+        headCircumference: Int
+    ): LiveData<Result<AnalysisResponse>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.analisisPertumbuhan(
+                child_id, date, age, gender, weight, height, headCircumference
+            )
+            emit(Result.Success(response))
+        } catch (e: HttpException) {
+            val json_inString = e.response()?.errorBody()?.string()
+            val error = Gson().fromJson(json_inString, ErrorResponse::class.java)
+            emit(Result.Error(error.message.toString()))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
     }
+
+    suspend fun getAnalysis(analysis_id: String): Result<List<AnalysisResultResponse>> {
+        return try {
+            val response = apiService.getAnalysis(analysis_id)
+            if (response.isSuccessful) {
+                val responseBody = response.body()
+                if (responseBody?.status == true) {
+                    Result.Success(responseBody.data)
+                } else {
+                    Result.Error(responseBody?.statusCode?.toString() ?: "Response error")
+                }
+            } else {
+                Result.Error(response.message())
+            }
+        } catch (e: Exception) {
+            Result.Error(e.message ?: "getAnalysis error")
+        }
+    }
+
+
+
+companion object {
+    @Volatile
+    private var instance: UserRepository? = null
+
+    fun getInstance(apiService: ApiService, preferences: LoginPreference): UserRepository =
+        instance ?: synchronized(this) {
+            instance ?: UserRepository(apiService, preferences).also { instance = it }
+        }
+}
+
 }
