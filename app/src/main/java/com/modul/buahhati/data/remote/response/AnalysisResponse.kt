@@ -3,6 +3,8 @@ package com.modul.buahhati.data.remote.response
 import com.google.gson.annotations.SerializedName
 
 data class AnalysisResponse(
+	@field:SerializedName("analyze_result")
+	val analyzeResult: ResultData? = null,
 
 	@field:SerializedName("date")
 	val date: String? = null,

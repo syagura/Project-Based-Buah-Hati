@@ -11,6 +11,7 @@ import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.DataItem
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
+import com.modul.buahhati.data.remote.response.ResultData
 import com.modul.buahhati.data.remote.retrofit.ApiService
 import kotlinx.coroutines.Dispatchers
 import retrofit2.HttpException
@@ -149,34 +150,33 @@ class UserRepository(
         }
     }
 
-    suspend fun getAnalysis(analysis_id: String): Result<List<AnalysisResultResponse>> {
-        return try {
+    fun getAnalysis(analysis_id: String): LiveData<Result<AnalysisResultResponse>> = liveData {
+        emit(Result.Loading)
+        try {
             val response = apiService.getAnalysis(analysis_id)
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 if (responseBody?.status == true) {
-                    Result.Success(responseBody.data)
+                    emit(Result.Success(responseBody))
                 } else {
-                    Result.Error(responseBody?.statusCode?.toString() ?: "Response error")
+                    emit(Result.Error(responseBody?.statusCode?.toString() ?: "Response error"))
                 }
             } else {
-                Result.Error(response.message())
+                emit(Result.Error(response.message()))
             }
         } catch (e: Exception) {
-            Result.Error(e.message ?: "getAnalysis error")
+            emit(Result.Error(e.message ?: "getAnalysis error"))
         }
     }
 
 
+    companion object {
+        @Volatile
+        private var instance: UserRepository? = null
 
-companion object {
-    @Volatile
-    private var instance: UserRepository? = null
-
-    fun getInstance(apiService: ApiService, preferences: LoginPreference): UserRepository =
-        instance ?: synchronized(this) {
-            instance ?: UserRepository(apiService, preferences).also { instance = it }
-        }
-}
-
+        fun getInstance(apiService: ApiService, preferences: LoginPreference): UserRepository =
+            instance ?: synchronized(this) {
+                instance ?: UserRepository(apiService, preferences).also { instance = it }
+            }
+    }
 }

@@ -16,7 +16,6 @@ import com.modul.buahhati.databinding.ActivityInputPertumbuhanBinding
 import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
-import com.modul.buahhati.view.login.LoginActivity
 import com.modul.buahhati.view.view_result.ViewResultActivity
 
 class InputPertumbuhan : AppCompatActivity() {
@@ -43,7 +42,6 @@ class InputPertumbuhan : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[InputPertumbuhanViewModel::class.java]
     }
 
-
     private fun addDataPertumbuhan() {
         binding.btnSaveTumbuh.setOnClickListener {
             val date = binding.etTglTumbuh.text.toString()
@@ -54,8 +52,7 @@ class InputPertumbuhan : AppCompatActivity() {
             val headCircumference = binding.etLingkarTumbuh.text.toString().toIntOrNull() ?: 0
 
             if (date.isEmpty() || age == 0 || gender.isEmpty() || weight == 0 || height == 0 || headCircumference == 0) {
-                Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -76,8 +73,8 @@ class InputPertumbuhan : AppCompatActivity() {
                                     "Data Pertumbuhan Berhasil Disimpan",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                                val intent =
-                                    Intent(this, ViewResultActivity::class.java)
+                                val intent = Intent(this, ViewResultActivity::class.java)
+                                intent.putExtra("ANALYSIS_ID", result.data?.analyzeResult?.analysisId)
                                 startActivity(intent)
                             }
 
@@ -94,17 +91,12 @@ class InputPertumbuhan : AppCompatActivity() {
 
                             else -> {
                                 binding.progressBar.visibility = View.GONE
-                                Toast.makeText(this, "Unknown error occurred.", Toast.LENGTH_SHORT)
-                                    .show()
+                                Toast.makeText(this, "Unknown error occurred.", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Child ID not found.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(this, "Child ID not found.", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeFragment::class.java))
                     finish()
                 }
@@ -134,5 +126,3 @@ class InputPertumbuhan : AppCompatActivity() {
         datePickerDialog.show()
     }
 }
-
-
