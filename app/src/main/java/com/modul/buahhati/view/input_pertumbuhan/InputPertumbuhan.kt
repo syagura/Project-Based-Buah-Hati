@@ -71,6 +71,7 @@ class InputPertumbuhan : AppCompatActivity() {
                                         ).show()
                                         val intent =
                                             Intent(this@InputPertumbuhan, ViewResultActivity::class.java)
+                                        intent.putExtra("ANALYSIS_ID", result.data?.analyzeResult?.analysisId)
                                         startActivity(intent)
                                     }
 

@@ -53,7 +53,7 @@ interface ApiService {
     suspend fun getArticles(): ArticleResponse
 
     @FormUrlEncoded
-    @POST("api/model/analyze")
+    @POST("http://34.50.81.3/api/model/analyze")
     suspend fun analisisPertumbuhan(
         @Field("child_id") child_id : String,
         @Field("date") date : String,
