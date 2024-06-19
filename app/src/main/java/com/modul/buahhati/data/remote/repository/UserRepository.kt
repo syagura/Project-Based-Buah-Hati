@@ -1,5 +1,6 @@
 package com.modul.buahhati.data.remote.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.google.gson.Gson
@@ -169,21 +170,29 @@ class UserRepository(
         }
     }
 
-    fun getAllAnalysis(): LiveData<Result<List<ResultData>>> = liveData {
+    fun getAllAnalysis(): LiveData<Result<List<AnalysisResultResponse>>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.getAllAnalysis()
-            val analysisData = response.data
-            if (analysisData != null) {
-                // Wrapping the single ResultData object in a list to match the expected return type
-                emit(Result.Success(listOf(analysisData)))
+            if (response.isSuccessful) {
+                val responseBody = response.body()
+                Log.d("UserRepository", "Response body: $responseBody") // Tambahkan log
+                if (responseBody != null && responseBody.status == true && responseBody.data != null) {
+                    emit(Result.Success(responseBody.data))
+                } else {
+                    emit(Result.Error("No data available"))
+                }
             } else {
-                emit(Result.Error("No data available"))
+                emit(Result.Error("Response error: ${response.message()}"))
             }
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
     }
+
+
+
+
 
     companion object {
         @Volatile

@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.modul.buahhati.data.remote.response.AnalysisResultResponse
 import com.modul.buahhati.databinding.RowItemHistoryBinding
 
-class HistoryAdapter : ListAdapter<AnalysisResultResponse, HistoryAdapter.historyViewHolder>(
-    HistoryAdapter.DIFF_CALLBACK
+class HistoryAdapter(private val onItemClick: (AnalysisResultResponse) -> Unit) : ListAdapter<AnalysisResultResponse, HistoryAdapter.HistoryViewHolder>(
+    DIFF_CALLBACK
 ) {
 
-    class historyViewHolder(
-        val binding: RowItemHistoryBinding
+    class HistoryViewHolder(
+        val binding: RowItemHistoryBinding,
+        val onItemClick: (AnalysisResultResponse) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(analysis: AnalysisResultResponse) {
             binding.tvTglPertumbuhan.text = analysis.data?.date
@@ -21,18 +22,21 @@ class HistoryAdapter : ListAdapter<AnalysisResultResponse, HistoryAdapter.histor
             binding.tvTinggiBadanPertumbuhan.text = analysis.data?.heightAge
             binding.tvLingkarKepalaPertumbuhan.text = analysis.data?.headCircumferenceAgeGender
             binding.tvGiziPertumbuhan.text = analysis.data?.weightHeight
+
+            binding.root.setOnClickListener {
+                onItemClick(analysis)
+            }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): historyViewHolder {
-        val binding =
-            RowItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return historyViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
+        val binding = RowItemHistoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HistoryViewHolder(binding, onItemClick)
     }
 
-    override fun onBindViewHolder(holder: historyViewHolder, position: Int) {
-        val current_item = getItem(position)
-        holder.bind(current_item)
+    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
+        val currentItem = getItem(position)
+        holder.bind(currentItem)
     }
 
     companion object {
@@ -41,7 +45,7 @@ class HistoryAdapter : ListAdapter<AnalysisResultResponse, HistoryAdapter.histor
                 oldItem: AnalysisResultResponse,
                 newItem: AnalysisResultResponse
             ): Boolean {
-                return oldItem == newItem
+                return oldItem.data?.id == newItem.data?.id
             }
 
             override fun areContentsTheSame(
@@ -52,6 +56,4 @@ class HistoryAdapter : ListAdapter<AnalysisResultResponse, HistoryAdapter.histor
             }
         }
     }
-
-
 }
