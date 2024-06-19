@@ -6,10 +6,11 @@ export const AnalysisRouter: Hapi.ServerRoute[] = [
   {
     method: 'POST',
     path: '/analyze',
-    options: {
+    handler: saveAnalysis
+    /* options: {
       pre: [{ method: requireUser }],
       handler: saveAnalysis
-    }
+    } */
   },
   {
     method: 'GET',

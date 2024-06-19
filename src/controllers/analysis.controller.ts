@@ -4,6 +4,7 @@ import {getAnalysisById, getAnalysisFromDB, saveAnalysisToDB} from '../services/
 import {inputAnalysisValidation, saveAnalysisValidation} from '../validations/analysis.validation'
 import { logger } from '../utils/logger'
 import { v4 as uuidv4 } from 'uuid'
+import axios from 'axios'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -64,24 +65,60 @@ export const saveAnalysis = async (request: Request, h: ResponseToolkit) => {
 
   // Process and categorize each label
   const labels: { [key: string]: string } = {
-    'berat badan/umur': processLabel(['kurang', 'normal', 'lebih'], [`${payload.weight}`, `${payload.age}`]),
-    'tinggi badan/umur': processLabel(['pendek', 'normal', 'tinggi'], [`${payload.height}`, `${payload.age}`]),
-    'berat badan/tinggi badan': processLabel(['gizi kurang', 'normal', 'gizi lebih'], [`${payload.weight}`, `${payload.height}`]),
-    'lingkar kepala/(umur & jenis kelamin)': processLabel(['mikrosefali', 'normal', 'makrosefali'], [`${payload.headCircumference}`, `${payload.age}`, `${payload.gender}`]),
+    'berat_badan': processLabel(['kurus', 'normal', 'obesitas'], [`${payload.weight}`, `${payload.age}`]),
+    'tinggi_badan': processLabel(['pendek', 'normal', 'tinggi'], [`${payload.height}`, `${payload.age}`]),
+    'gizi': processLabel(['gizi kurang', 'normal', 'gizi lebih'], [`${payload.weight}`, `${payload.height}`]),
+    'lingkar_kepala': processLabel(['mikrosefali', 'normal', 'makrosefali'], [`${payload.headCircumference}`, `${payload.age}`, `${payload.gender}`]),
   }
 
   const analysis_id = uuidv4()
   const child_id = `${value.child_id}`
-  const weight_age = labels['berat badan/umur']
-  const height_age = labels['tinggi badan/umur']
-  const weight_height = labels['berat badan/tinggi badan']
-  const headCircumference_age_gender = labels['lingkar kepala/(umur & jenis kelamin)']
+  const weight_age = labels['berat_badan']
+  const height_age = labels['tinggi_badan']
+  const weight_height = labels['gizi']
+  const headCircumference_age_gender = labels['lingkar_kepala']
   const date = `${value.date}`
 
   saveAnalysisValidation({analysis_id, weight_age, height_age, weight_height, headCircumference_age_gender})
 
+  /** Start Gemini Prompt API */
+  let recomendation = '';
+
   try {
-    await saveAnalysisToDB({analysis_id, child_id, weight_age, height_age, weight_height, headCircumference_age_gender, date})
+    const response = await axios.post('http://34.128.120.84:5000/summary', {
+      gender: "Perempuan",  // ganti dengan varibael input awal aplikasi
+      age: 7,  // ganti dengan varibael input awal aplikasi
+      weight: 25, // ganti dengan varibael input awal aplikasi
+      height: 120, // ganti dengan varibael input awal aplikasi
+      headCircumference: 54, // ganti dengan varibael input awal aplikasi
+      weightAgeGender: "Obesitas", // ganti dengan varibael input dari output prediksi model
+      heightAgeGender: "Tinggi", // ganti dengan varibael input dari output prediksi model
+      headCircumferenceAgeGender: "Makrosefali", // ganti dengan varibael input dari output prediksi model
+      weightHeight: "Gizi Lebih" // ganti dengan varibael input dari output prediksi model
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.status === 200) {
+      const data = response.data;
+      recomendation = data.summaryText;
+      console.log("Summary API Response Text:", data.summaryText);
+    } else {
+      console.error(`Error ${response.status}: ${response.statusText}`);
+    }
+  } catch (error: any) {
+    if (error.response) {
+      console.error(`Error ${error.response.status}: ${error.response.statusText}`);
+    } else {
+      console.error(`Error: ${error.message}`);
+    }
+  }
+  /** End Gemini Prompt API */
+
+  try {
+    await saveAnalysisToDB({analysis_id, child_id, weight_age, height_age, weight_height, headCircumference_age_gender, date, recomendation})
 
     logger.info(`Success save the analysis prediction`)
     console.log(payload)
@@ -98,7 +135,8 @@ export const saveAnalysis = async (request: Request, h: ResponseToolkit) => {
           height_age,
           weight_height,
           headCircumference_age_gender,
-          date
+          date,
+          recomendation
         }
       })
       .code(201)

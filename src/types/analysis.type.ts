@@ -6,4 +6,5 @@ export default interface AnalysisType {
   weight_height: String
   headCircumference_age_gender: String
   date: String
+  recomendation: String
 }

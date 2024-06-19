@@ -22,6 +22,9 @@ const analysisSchema = new mongoose.Schema(
     },
     date: {
       type: String
+    },
+    recomendation: {
+      type: String
     }
   },
   { timestamps: true }
