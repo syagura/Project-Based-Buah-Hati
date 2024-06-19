@@ -5,12 +5,11 @@ import { getAnalysis, saveAnalysis } from '../controllers/analysis.controller'
 export const AnalysisRouter: Hapi.ServerRoute[] = [
   {
     method: 'POST',
-    path: '/analyze',
-    handler: saveAnalysis
-    /* options: {
+    path: '/api/model/analyze',
+    options: {
       pre: [{ method: requireUser }],
       handler: saveAnalysis
-    } */
+    }
   },
   {
     method: 'GET',

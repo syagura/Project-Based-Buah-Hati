@@ -131,10 +131,10 @@ export const saveAnalysis = async (request: Request, h: ResponseToolkit) => {
         analyze_result: {
           analysis_id,
           child_id,
-          weight_age,
-          height_age,
-          weight_height,
-          headCircumference_age_gender,
+          weight: weight_age,
+          height: height_age,
+          nitrition: weight_height,
+          headCircumference: headCircumference_age_gender,
           date,
           recomendation
         }
