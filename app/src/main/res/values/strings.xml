@@ -98,4 +98,5 @@
     <string name="logout">Logout</string>
     <string name="are_your_sure">Are You Sure?</string>
     <string name="add_data_pertumbuhan">Tambah Data Pertumbuhan</string>
+    <string name="kembali_ke_home">Kembali ke Home</string>
 </resources>

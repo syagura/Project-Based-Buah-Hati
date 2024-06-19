@@ -33,7 +33,7 @@ class MyEditText : AppCompatEditText, View.OnTouchListener {
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 when (id) {
-                    R.id.ed_login_email, R.id.ed_register_email -> {
+                    R.id.ed_register_email -> {
                         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(s).matches()) {
                             error = context.getString(R.string.invalid_email)
                         } else {
@@ -41,7 +41,7 @@ class MyEditText : AppCompatEditText, View.OnTouchListener {
                         }
                     }
 
-                    R.id.ed_login_password, R.id.ed_register_password -> {
+                    R.id.ed_register_password -> {
                         if (s.length < 8) {
                             error = context.getString(R.string.invalid_password)
                         } else {
