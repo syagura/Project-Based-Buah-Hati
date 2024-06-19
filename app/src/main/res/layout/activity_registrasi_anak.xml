@@ -133,12 +133,13 @@
                     android:entries="@array/blood_types"
                     android:padding="12dp" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/btn_register_anak"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="280dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:layout_margin="16dp"
-                    android:backgroundTint="@color/pink"
+                    android:background="@drawable/bt_simpan_data"
                     android:text="@string/simpan_data"
                     android:textColor="#ffffff" />
             </LinearLayout>

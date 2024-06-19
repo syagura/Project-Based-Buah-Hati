@@ -8,9 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_informasi"
-        android:layout_width="160dp"
-        android:layout_height="140dp"
-        android:scaleType="centerCrop"
+        android:layout_width="275dp"
+        android:layout_height="151dp"
         android:src="@drawable/preview_image_article" />
 
     <TextView

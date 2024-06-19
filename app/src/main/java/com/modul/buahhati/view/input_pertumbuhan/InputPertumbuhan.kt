@@ -1,5 +1,4 @@
 package com.modul.buahhati.view.input_pertumbuhan
-
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
@@ -16,34 +15,25 @@ import com.modul.buahhati.databinding.ActivityInputPertumbuhanBinding
 import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
-import com.modul.buahhati.view.login.LoginActivity
 import com.modul.buahhati.view.view_result.ViewResultActivity
-
 class InputPertumbuhan : AppCompatActivity() {
     private lateinit var binding: ActivityInputPertumbuhanBinding
     private lateinit var viewModel: InputPertumbuhanViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInputPertumbuhanBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.progressBar.visibility = View.GONE
-
         setupViewModel()
         addDataPertumbuhan()
         setDatePicker()
     }
-
     private fun setupViewModel() {
         val factory: ViewModelFactory = ViewModelFactory.getInstance(
             this, LoginPreference.getInstance(dataStore)
         )
-
         viewModel = ViewModelProvider(this, factory)[InputPertumbuhanViewModel::class.java]
     }
-
-
     private fun addDataPertumbuhan() {
         binding.btnSaveTumbuh.setOnClickListener {
             val date = binding.etTglTumbuh.text.toString()
@@ -52,7 +42,6 @@ class InputPertumbuhan : AppCompatActivity() {
             val weight = binding.etBeratTumbuh.text.toString().toIntOrNull() ?: 0
             val height = binding.etTinggiTumbuh.text.toString().toIntOrNull() ?: 0
             val headCircumference = binding.etLingkarTumbuh.text.toString().toIntOrNull() ?: 0
-
             if (date.isEmpty() || age == 0 || gender.isEmpty() || weight == 0 || height == 0 || headCircumference == 0) {
                 Toast.makeText(this, "Data tidak boleh kosong", Toast.LENGTH_SHORT)
                     .show()
@@ -129,13 +118,11 @@ class InputPertumbuhan : AppCompatActivity() {
             showDatePicker()
         }
     }
-
     private fun showDatePicker() {
         val calendar: Calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
-
         val datePickerDialog = DatePickerDialog(
             this,
             { _, year, month, day ->
@@ -146,5 +133,3 @@ class InputPertumbuhan : AppCompatActivity() {
         datePickerDialog.show()
     }
 }
-
-

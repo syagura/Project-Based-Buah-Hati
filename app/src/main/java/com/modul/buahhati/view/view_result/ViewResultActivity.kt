@@ -2,6 +2,7 @@ package com.modul.buahhati.view.view_result
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.modul.buahhati.data.remote.LoginPreference
@@ -21,6 +22,13 @@ class ViewResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.progressBar.visibility = View.GONE
+
+        setupViewModel()
+
+        val analysisId = intent.getStringExtra("ANALYSIS_ID")
+        if (analysisId != null) {
+            showResult(analysisId)
+        }
     }
 
     private fun setupViewModel() {
@@ -31,22 +39,27 @@ class ViewResultActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[ResultViewModel::class.java]
     }
 
-    private fun showResult(analysis_id : String) {
-        viewModel.getAnalysis(analysis_id).observe(this){result ->
-            when(result){
-                is Result.Loading ->{
+    private fun showResult(analysis_id: String) {
+        viewModel.getAnalysis(analysis_id).observe(this) { result ->
+            when (result) {
+                is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }
-
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    val analysisData = result.data?.data
+                    if (analysisData != null) {
+                        binding.tvLingkarKepalaStatus.text = "Lingkar Kepala : ${analysisData.headCircumferenceAgeGender}"
+                        binding.tvBeratBadanStatus.text = "Berat Badan : ${analysisData.weightAge}"
+                        binding.tvTinggiBadanStatus.text = "Tinggi Badan : ${analysisData.heightAge}"
+                        binding.tvGiziStatus.text = "Gizi : ${analysisData.weightHeight}"
+                    }
                 }
-
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
-
 }

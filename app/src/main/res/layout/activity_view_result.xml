@@ -38,23 +38,49 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvInterpretasiStatus"
+            android:id="@+id/tvLingkarKepalaStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Normal"
+            android:text="Lingkar Kepala"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- TextView untuk hasil berat badan -->
+        <TextView
+            android:id="@+id/tvBeratBadanStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Berat Badan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- TextView untuk hasil tinggi badan -->
+        <TextView
+            android:id="@+id/tvTinggiBadanStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="Tinggi Badan"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tvInterpretasiDetail"
+            android:id="@+id/tvGiziStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lingkar kepala anak sesuai dengan umur. Pantau ulang setiap bulan secara rutin."
+            android:layout_marginBottom="4dp"
+            android:text="Gizi"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
