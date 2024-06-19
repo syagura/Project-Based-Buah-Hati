@@ -59,58 +59,70 @@ class InputPertumbuhan : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.getChildID().observe(this) { childID ->
-                if (childID != null) {
-                    viewModel.addData(
-                        childID, date, age, gender, weight, height, headCircumference
-                    ).observe(this) { result ->
-                        when (result) {
-                            is Result.Loading -> {
-                                binding.progressBar.visibility = View.VISIBLE
-                            }
+            AlertDialog.Builder(this).apply {
+                setTitle("Konfirmasi Data")
+                setMessage("Pastikan semua data yang anda masukan sudah benar.")
+                setPositiveButton("Lanjut") { _, _ ->
+                    viewModel.getChildID().observe(this@InputPertumbuhan) { childID ->
+                        if (childID != null) {
+                            viewModel.addData(
+                                childID, date, age, gender, weight, height, headCircumference
+                            ).observe(this@InputPertumbuhan) { result ->
+                                when (result) {
+                                    is Result.Loading -> {
+                                        binding.progressBar.visibility = View.VISIBLE
+                                    }
 
-                            is Result.Success -> {
-                                binding.progressBar.visibility = View.GONE
-                                Toast.makeText(
-                                    this,
-                                    "Data Pertumbuhan Berhasil Disimpan",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                val intent =
-                                    Intent(this, ViewResultActivity::class.java)
-                                startActivity(intent)
-                            }
+                                    is Result.Success -> {
+                                        binding.progressBar.visibility = View.GONE
+                                        Toast.makeText(
+                                            this@InputPertumbuhan,
+                                            "Data Pertumbuhan Berhasil Disimpan",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        val intent =
+                                            Intent(this@InputPertumbuhan, ViewResultActivity::class.java)
+                                        startActivity(intent)
+                                    }
 
-                            is Result.Error -> {
-                                binding.progressBar.visibility = View.GONE
-                                AlertDialog.Builder(this).apply {
-                                    setTitle(getString(R.string.error_message))
-                                    setMessage(result.error)
-                                    setPositiveButton(getString(R.string.continue_message)) { _, _ -> }
-                                    create()
-                                    show()
+                                    is Result.Error -> {
+                                        binding.progressBar.visibility = View.GONE
+                                        AlertDialog.Builder(this@InputPertumbuhan).apply {
+                                            setTitle(getString(R.string.error_message))
+                                            setMessage(result.error)
+                                            setPositiveButton(getString(R.string.continue_message)) { _, _ -> }
+                                            create()
+                                            show()
+                                        }
+                                    }
+
+                                    else -> {
+                                        binding.progressBar.visibility = View.GONE
+                                        Toast.makeText(this@InputPertumbuhan, "Unknown error occurred.", Toast.LENGTH_SHORT)
+                                            .show()
+                                    }
                                 }
                             }
-
-                            else -> {
-                                binding.progressBar.visibility = View.GONE
-                                Toast.makeText(this, "Unknown error occurred.", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                        } else {
+                            Toast.makeText(
+                                this@InputPertumbuhan,
+                                "Child ID not found.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            startActivity(Intent(this@InputPertumbuhan, HomeFragment::class.java))
+                            finish()
                         }
                     }
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Child ID not found.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    startActivity(Intent(this, HomeFragment::class.java))
-                    finish()
                 }
+                setNegativeButton("Kembali") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
             }
         }
     }
+
 
     private fun setDatePicker() {
         binding.etTglTumbuh.setOnClickListener {
