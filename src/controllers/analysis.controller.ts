@@ -86,15 +86,15 @@ export const saveAnalysis = async (request: Request, h: ResponseToolkit) => {
 
   try {
     const response = await axios.post('http://34.128.120.84:5000/summary', {
-      gender: "Perempuan",  // ganti dengan varibael input awal aplikasi
-      age: 7,  // ganti dengan varibael input awal aplikasi
-      weight: 25, // ganti dengan varibael input awal aplikasi
-      height: 120, // ganti dengan varibael input awal aplikasi
-      headCircumference: 54, // ganti dengan varibael input awal aplikasi
-      weightAgeGender: "Obesitas", // ganti dengan varibael input dari output prediksi model
-      heightAgeGender: "Tinggi", // ganti dengan varibael input dari output prediksi model
-      headCircumferenceAgeGender: "Makrosefali", // ganti dengan varibael input dari output prediksi model
-      weightHeight: "Gizi Lebih" // ganti dengan varibael input dari output prediksi model
+      gender: `${value.gender}`,
+      age: `${value.age}`, 
+      weight: `${value.weight}`,
+      height: `${value.height}`,
+      headCircumference: `${value.headCircumference}`,
+      weightAgeGender: weight_age,
+      heightAgeGender: height_age,
+      headCircumferenceAgeGender: headCircumference_age_gender,
+      weightHeight: weight_height
     }, {
       headers: {
         'Content-Type': 'application/json'
