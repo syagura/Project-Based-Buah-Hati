@@ -76,6 +76,18 @@
             card_view:layout_constraintTop_toBottomOf="@+id/tv_tinggi_badan_pertumbuhan" />
 
         <TextView
+            android:id="@+id/tv_gizi_pertumbuhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="5"
+            android:text="@string/gizi_anak"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_lingkar_kepala_pertumbuhan" />
+
+        <TextView
             android:id="@+id/tv_hasil_analisis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -85,7 +97,7 @@
             android:text="@string/tv_hasil_analisis"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_lingkar_kepala_pertumbuhan" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_gizi_pertumbuhan" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

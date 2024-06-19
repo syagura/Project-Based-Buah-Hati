@@ -66,4 +66,7 @@ interface ApiService {
 
     @GET("/analyze/{analysis_id}")
     suspend fun getAnalysis(@Path("analysis_id") analysis_id: String): Response<AnalysisResultResponse>
+
+    @GET("/analyze")
+    suspend fun getAllAnalysis(): AnalysisResultResponse
 }

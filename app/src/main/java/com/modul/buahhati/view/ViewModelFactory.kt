@@ -10,6 +10,7 @@ import com.modul.buahhati.view.article.DetailArticleViewModel
 import com.modul.buahhati.view.fragment.fragment_home.HomeViewModel
 import com.modul.buahhati.view.fragment.fragment_home.InputViewModel
 import com.modul.buahhati.view.fragment.fragment_home.ProfileViewModel
+import com.modul.buahhati.view.history.HistoryViewModel
 import com.modul.buahhati.view.input_pertumbuhan.InputPertumbuhanViewModel
 import com.modul.buahhati.view.login.LoginViewModel
 import com.modul.buahhati.view.regis_anak.RegisAnakViewModel
@@ -53,6 +54,9 @@ class ViewModelFactory(
         }
         if (modelClass.isAssignableFrom(ResultViewModel::class.java)){
             return ResultViewModel(userRepository, prereference) as T
+        }
+        if (modelClass.isAssignableFrom(HistoryViewModel::class.java)){
+            return HistoryViewModel(userRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class" + modelClass.name)

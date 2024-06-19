@@ -169,6 +169,21 @@ class UserRepository(
         }
     }
 
+    fun getAllAnalysis(): LiveData<Result<List<ResultData>>> = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiService.getAllAnalysis()
+            val analysisData = response.data
+            if (analysisData != null) {
+                // Wrapping the single ResultData object in a list to match the expected return type
+                emit(Result.Success(listOf(analysisData)))
+            } else {
+                emit(Result.Error("No data available"))
+            }
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
 
     companion object {
         @Volatile
