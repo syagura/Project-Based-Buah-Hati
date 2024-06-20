@@ -25,7 +25,7 @@ object ApiConfig {
             .writeTimeout(120, TimeUnit.SECONDS) // Write timeout
             .build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://backend2-75aqccy4zq-et.a.run.app")
+            .baseUrl("https://buah-hati-api-gljrq5g7iq-et.a.run.app")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

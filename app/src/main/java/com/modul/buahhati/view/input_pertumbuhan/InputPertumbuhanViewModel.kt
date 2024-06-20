@@ -8,7 +8,6 @@ import com.modul.buahhati.data.remote.repository.UserRepository
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.AnalysisResponse
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.firstOrNull
 
 class InputPertumbuhanViewModel(
     private val userRepository: UserRepository,

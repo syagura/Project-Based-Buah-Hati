@@ -6,12 +6,13 @@ import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.repository.UserRepository
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.AnalysisResultResponse
+import com.modul.buahhati.data.remote.response.ResultResponse
 
 class ResultViewModel(
     private val userRepository: UserRepository,
 ) : ViewModel() {
 
-    fun getAnalysis(analysis_id: String): LiveData<Result<AnalysisResultResponse>> {
-        return userRepository.getAnalysis(analysis_id)
+    fun getAnalysis(child_id: String, analysis_id: String): LiveData<Result<ResultResponse>> {
+        return userRepository.getAnalysis(child_id, analysis_id)
     }
 }

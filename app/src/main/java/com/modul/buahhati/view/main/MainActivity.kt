@@ -7,7 +7,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.modul.buahhati.R
 import com.modul.buahhati.databinding.ActivityMainBinding
 import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
-import com.modul.buahhati.view.fragment.fragment_home.InputPertumbuhanFragment
 import com.modul.buahhati.view.fragment.fragment_home.ProfileFragment
 
 class MainActivity : AppCompatActivity() {

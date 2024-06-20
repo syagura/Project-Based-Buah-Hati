@@ -7,12 +7,12 @@ import com.google.gson.Gson
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.response.AnalysisResponse
-import com.modul.buahhati.data.remote.response.AnalysisResultResponse
 import com.modul.buahhati.data.remote.response.ChildRegisterResponse
 import com.modul.buahhati.data.remote.response.DataItem
 import com.modul.buahhati.data.remote.response.ErrorResponse
 import com.modul.buahhati.data.remote.response.LoginResponse
 import com.modul.buahhati.data.remote.response.ResultData
+import com.modul.buahhati.data.remote.response.ResultResponse
 import com.modul.buahhati.data.remote.retrofit.ApiService
 import kotlinx.coroutines.Dispatchers
 import retrofit2.HttpException
@@ -151,10 +151,10 @@ class UserRepository(
         }
     }
 
-    fun getAnalysis(analysis_id: String): LiveData<Result<AnalysisResultResponse>> = liveData {
+    fun getAnalysis(child_id: String, analysis_id: String): LiveData<Result<ResultResponse>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getAnalysis(analysis_id)
+            val response = apiService.getAnalysis(child_id , analysis_id)
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 if (responseBody?.status == true) {
@@ -170,17 +170,17 @@ class UserRepository(
         }
     }
 
-    fun getAllAnalysis(child_id: String): LiveData<Result<List<AnalysisResultResponse>>> = liveData {
+    fun getAllAnalysis(child_id: String): LiveData<Result<List<ResultData>>> = liveData {
         emit(Result.Loading)
         try {
             val response = apiService.getAllAnalysis(child_id)
             if (response.isSuccessful) {
                 val responseBody = response.body()
-                Log.d("UserRepository", "Response body: $responseBody") // Tambahkan log
+                Log.d("UserRepository", "Response body: $responseBody") // Add log
                 if (responseBody != null && responseBody.status == true && responseBody.data != null) {
-                    emit(Result.Success(responseBody.data))
+                    emit(Result.Success(responseBody.data.filterNotNull()))
                 } else {
-                    emit(Result.Error("No data available"))
+                    emit(Result.Error("No data available or invalid response"))
                 }
             } else {
                 emit(Result.Error("Response error: ${response.message()}"))
@@ -189,6 +189,8 @@ class UserRepository(
             emit(Result.Error(e.message.toString()))
         }
     }
+
+
 
     companion object {
         @Volatile

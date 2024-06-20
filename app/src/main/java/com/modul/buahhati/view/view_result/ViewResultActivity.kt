@@ -30,9 +30,11 @@ class ViewResultActivity : AppCompatActivity() {
 
         setupViewModel()
 
+        val childId = intent.getStringExtra("CHILD_ID")
         val analysisId = intent.getStringExtra("ANALYSIS_ID")
-        if (analysisId != null) {
-            showResult(analysisId)
+
+        if (childId != null && analysisId != null) {
+            showResult(childId, analysisId)
         }
 
         binding.btnRegisterAnak.setOnClickListener {
@@ -48,8 +50,8 @@ class ViewResultActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[ResultViewModel::class.java]
     }
 
-    private fun showResult(analysis_id: String) {
-        viewModel.getAnalysis(analysis_id).observe(this) { result ->
+    private fun showResult(child_id: String ,analysis_id: String) {
+        viewModel.getAnalysis(child_id, analysis_id).observe(this) { result ->
             when (result) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

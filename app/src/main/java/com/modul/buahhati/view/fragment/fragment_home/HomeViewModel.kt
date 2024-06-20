@@ -6,7 +6,6 @@ import androidx.lifecycle.liveData
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.repository.UserRepository
-import com.modul.buahhati.data.remote.response.ArticleResponse
 import com.modul.buahhati.data.remote.response.DataItem
 import kotlinx.coroutines.flow.catch
 

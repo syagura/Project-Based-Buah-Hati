@@ -8,19 +8,15 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.modul.buahhati.R
 import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.data.remote.dataStore
 import com.modul.buahhati.databinding.ActivityLoginBinding
 import com.modul.buahhati.view.ViewModelFactory
-import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
 import com.modul.buahhati.view.main.MainActivity
-import com.modul.buahhati.view.regis_anak.RegistrasiAnakActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding

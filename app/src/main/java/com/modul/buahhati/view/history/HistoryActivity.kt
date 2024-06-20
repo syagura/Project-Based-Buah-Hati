@@ -48,7 +48,7 @@ class HistoryActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         adapter = HistoryAdapter { analysis ->
             val intent = Intent(this, DetailHistoryActivity::class.java).apply {
-                putExtra(DetailHistoryActivity.EXTRA_ANALYSIS_ID, analysis.data?.analysisId)
+                putExtra(DetailHistoryActivity.EXTRA_ANALYSIS_ID, analysis.analysisId)
             }
             startActivity(intent)
         }
@@ -68,12 +68,12 @@ class HistoryActivity : AppCompatActivity() {
                 is Result.Success -> {
                     binding.progressBar.visibility = View.GONE
                     val data = result.data
-                    Log.d("HistoryActivity", "Data received: $data") // Tambahkan log
+                    Log.d("HistoryActivity", "Data received: $data")
                     adapter.submitList(data)
                 }
                 is Result.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    Log.e("HistoryActivity", "Error: ${result.error}") // Tambahkan log
+                    Log.e("HistoryActivity", "Error: ${result.error}")
                 }
             }
         }

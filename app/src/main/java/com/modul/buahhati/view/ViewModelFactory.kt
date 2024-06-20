@@ -7,9 +7,7 @@ import com.modul.buahhati.data.remote.LoginPreference
 import com.modul.buahhati.data.remote.repository.UserRepository
 import com.modul.buahhati.di.Injection
 import com.modul.buahhati.view.article.DetailArticleViewModel
-import com.modul.buahhati.view.detail_history.DetailHistoryViewModel
 import com.modul.buahhati.view.fragment.fragment_home.HomeViewModel
-import com.modul.buahhati.view.fragment.fragment_home.InputViewModel
 import com.modul.buahhati.view.fragment.fragment_home.ProfileViewModel
 import com.modul.buahhati.view.history.HistoryViewModel
 import com.modul.buahhati.view.input_pertumbuhan.InputPertumbuhanViewModel
@@ -56,9 +54,6 @@ class ViewModelFactory(
         }
         if (modelClass.isAssignableFrom(HistoryViewModel::class.java)){
             return HistoryViewModel(userRepository, preference) as T
-        }
-        if (modelClass.isAssignableFrom(DetailHistoryViewModel::class.java)) {
-            return DetailHistoryViewModel(userRepository) as T
         }
 
         throw IllegalArgumentException("Unknown ViewModel class" + modelClass.name)

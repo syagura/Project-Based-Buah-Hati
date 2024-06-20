@@ -12,7 +12,8 @@ class ArticleAdapter(
 ) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = RowItemInformasiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            RowItemInformasiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -27,7 +28,8 @@ class ArticleAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: RowItemInformasiBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: RowItemInformasiBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(article: DataItem?, listener: (DataItem?) -> Unit) {
             binding.tvInformasi.text = article?.title
             binding.root.setOnClickListener { listener(article) }

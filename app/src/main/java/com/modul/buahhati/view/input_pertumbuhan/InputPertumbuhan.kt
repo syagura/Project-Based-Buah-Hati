@@ -1,4 +1,5 @@
 package com.modul.buahhati.view.input_pertumbuhan
+
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
@@ -16,6 +17,7 @@ import com.modul.buahhati.view.ViewModelFactory
 import com.modul.buahhati.data.remote.Result
 import com.modul.buahhati.view.fragment.fragment_home.HomeFragment
 import com.modul.buahhati.view.view_result.ViewResultActivity
+
 class InputPertumbuhan : AppCompatActivity() {
     private lateinit var binding: ActivityInputPertumbuhanBinding
     private lateinit var viewModel: InputPertumbuhanViewModel
@@ -28,12 +30,14 @@ class InputPertumbuhan : AppCompatActivity() {
         addDataPertumbuhan()
         setDatePicker()
     }
+
     private fun setupViewModel() {
         val factory: ViewModelFactory = ViewModelFactory.getInstance(
             this, LoginPreference.getInstance(dataStore)
         )
         viewModel = ViewModelProvider(this, factory)[InputPertumbuhanViewModel::class.java]
     }
+
     private fun addDataPertumbuhan() {
         binding.btnSaveTumbuh.setOnClickListener {
             val date = binding.etTglTumbuh.text.toString()
@@ -69,9 +73,19 @@ class InputPertumbuhan : AppCompatActivity() {
                                             "Data Pertumbuhan Berhasil Disimpan",
                                             Toast.LENGTH_SHORT
                                         ).show()
-                                        val intent =
-                                            Intent(this@InputPertumbuhan, ViewResultActivity::class.java)
-                                        intent.putExtra("ANALYSIS_ID", result.data?.analyzeResult?.analysisId)
+                                        val intent = Intent(
+                                            this@InputPertumbuhan,
+                                            ViewResultActivity::class.java
+                                        ).apply {
+                                            putExtra(
+                                                "ANALYSIS_ID",
+                                                result.data?.analyzeResult?.analysisId
+                                            )
+                                            putExtra(
+                                                "CHILD_ID",
+                                                result.data?.analyzeResult?.childId
+                                            )
+                                        }
                                         startActivity(intent)
                                     }
 
@@ -88,7 +102,11 @@ class InputPertumbuhan : AppCompatActivity() {
 
                                     else -> {
                                         binding.progressBar.visibility = View.GONE
-                                        Toast.makeText(this@InputPertumbuhan, "Unknown error occurred.", Toast.LENGTH_SHORT)
+                                        Toast.makeText(
+                                            this@InputPertumbuhan,
+                                            "Unknown error occurred.",
+                                            Toast.LENGTH_SHORT
+                                        )
                                             .show()
                                     }
                                 }
@@ -119,6 +137,7 @@ class InputPertumbuhan : AppCompatActivity() {
             showDatePicker()
         }
     }
+
     private fun showDatePicker() {
         val calendar: Calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)

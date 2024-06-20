@@ -76,7 +76,6 @@ class RegistrasiAnakActivity : AppCompatActivity() {
             val bodyHeight = binding.etHeight.text.toString().toIntOrNull() ?: 0
             val headCircumference = binding.etHeadCircumference.text.toString().toIntOrNull() ?: 0
 
-            // Validasi input sebelum mengirimkan ke ViewModel
             if (name.isEmpty() || birthDate.isEmpty() || gender.isEmpty() || bloodType == "Pilih Golongan Darah") {
                 Toast.makeText(this, "Harap isi semua kolom.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

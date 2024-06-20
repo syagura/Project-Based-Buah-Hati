@@ -2,10 +2,10 @@ package com.modul.buahhati.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class AnalysisResultResponse(
+data class ResultResponse(
 
 	@field:SerializedName("data")
-	val data: List<ResultData?>? = null,
+	val data: SingleResultData? = null,
 
 	@field:SerializedName("status")
 	val status: Boolean? = null,
@@ -14,7 +14,7 @@ data class AnalysisResultResponse(
 	val statusCode: Int? = null
 )
 
-data class ResultData(
+data class SingleResultData(
 
 	@field:SerializedName("date")
 	val date: String? = null,
@@ -34,9 +34,6 @@ data class ResultData(
 	@field:SerializedName("weight_height")
 	val weightHeight: String? = null,
 
-	@field:SerializedName("recomendation")
-	val recomendation: String? = null,
-
 	@field:SerializedName("_id")
 	val id: String? = null,
 
@@ -50,5 +47,8 @@ data class ResultData(
 	val weightAge: String? = null,
 
 	@field:SerializedName("updatedAt")
-	val updatedAt: String? = null
+	val updatedAt: String? = null,
+
+	@field:SerializedName("recomendation")
+	val recomendation: String? = null
 )

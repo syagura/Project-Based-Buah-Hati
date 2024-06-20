@@ -8,6 +8,6 @@ import com.modul.buahhati.data.remote.Result
 
 class DetailHistoryViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    fun getAnalysisDetail(analysisId: String): LiveData<Result<AnalysisResultResponse>> =
-        userRepository.getAnalysis(analysisId)
+//    fun getAnalysisDetail(analysisId: String): LiveData<Result<AnalysisResultResponse>> =
+//        userRepository.getAnalysis(analysisId)
 }

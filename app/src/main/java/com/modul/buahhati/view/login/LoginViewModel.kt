@@ -24,7 +24,7 @@ class LoginViewModel(
             loginPreference.svUserName(userName)
             loginPreference.login()
             Log.d("LoginViewModel", "Saving Token: $token, User ID: $userId, User Name: $userName")
-            // Tambahkan log untuk memastikan token dan ID pengguna tersimpan
+
             loginPreference.getToken().collect { savedToken ->
                 Log.d("LoginViewModel", "Saved Token: $savedToken")
             }
