@@ -13,7 +13,7 @@ export const AnalysisRouter: Hapi.ServerRoute[] = [
   },
   {
     method: 'GET',
-    path: '/analyze/{id}',
+    path: '/analyze/{child_id}/{id}',
     options: {
       pre: [{ method: requireUser }],
       handler: getAnalysis
@@ -21,7 +21,7 @@ export const AnalysisRouter: Hapi.ServerRoute[] = [
   },
   {
     method: 'GET',
-    path: '/analyze',
+    path: '/analyze/{child_id}',
     options: {
       pre: [{ method: requireUser }],
       handler: getAnalysis

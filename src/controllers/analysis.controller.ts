@@ -154,11 +154,11 @@ export const saveAnalysis = async (request: Request, h: ResponseToolkit) => {
 
 export const getAnalysis = async (request: Request, h: ResponseToolkit) => {
   const {
-    params: { id }
+    params: { child_id, id }
   } = request
 
   if (id) {
-    const analysis = await getAnalysisById(id)
+    const analysis = await getAnalysisById(child_id, id)
     if (analysis) {
       logger.info('Success get analysis data')
       return h.response({
@@ -176,7 +176,7 @@ export const getAnalysis = async (request: Request, h: ResponseToolkit) => {
       data: {}
     })
   } else {
-    const analysis = await getAnalysisFromDB()
+    const analysis = await getAnalysisFromDB(child_id)
     logger.info('Success get analysis data')
     return h.response({
       status: true,

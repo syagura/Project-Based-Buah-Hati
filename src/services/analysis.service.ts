@@ -6,9 +6,9 @@ export const saveAnalysisToDB = async (analysis: AnalysisType) => {
   return await analysisModel.create(analysis)
 }
 
-export const getAnalysisFromDB = async () => {
+export const getAnalysisFromDB = async (id: String) => {
   return await analysisModel
-    .find()
+    .find({ child_id: id })
     .then((data) => {
       return data
     })
@@ -18,6 +18,6 @@ export const getAnalysisFromDB = async () => {
     })
 }
 
-export const getAnalysisById = async (id: String) => {
-  return await analysisModel.findOne({ analysis_id: id })
+export const getAnalysisById = async (child_id: String, analysis_id: String) => {
+  return await analysisModel.findOne({ child_id, analysis_id })
 }
