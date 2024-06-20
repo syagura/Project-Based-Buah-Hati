@@ -12,7 +12,6 @@ import android.widget.ImageButton
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.asLiveData
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.modul.buahhati.R
 import com.modul.buahhati.adapter.ArticleAdapter
@@ -99,13 +98,19 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-    private fun buttonRiwayat(){
+    private fun buttonRiwayat() {
         btnRiwayat = binding.root.findViewById(R.id.btn_riwayat)
         btnRiwayat.setOnClickListener {
-            val intent = Intent(requireContext(), HistoryActivity::class.java)
-            startActivity(intent)
+            homeViewModel.getChildID().observe(viewLifecycleOwner, Observer { childId ->
+                childId?.let {
+                    val intent = Intent(requireContext(), HistoryActivity::class.java)
+                    intent.putExtra("child_id", it)
+                    startActivity(intent)
+                } ?: run {
+                    Log.e("HomeFragment", "Child ID is null")
+                }
+            })
         }
     }
-
 }
+

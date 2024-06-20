@@ -28,7 +28,13 @@ class HistoryActivity : AppCompatActivity() {
 
         setupViewModel()
         setupRecyclerView()
-        getHistory()
+
+        val child_id = intent.getStringExtra("child_id")
+        if (child_id != null) {
+            getHistory(child_id)
+        } else {
+            Log.e("HistoryActivity", "No child_id found in intent")
+        }
     }
 
     private fun setupViewModel() {
@@ -53,8 +59,8 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun getHistory() {
-        viewModel.getHistory().observe(this) { result ->
+    private fun getHistory(child_id : String) {
+        viewModel.getHistory(child_id).observe(this) { result ->
             when (result) {
                 is Result.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE

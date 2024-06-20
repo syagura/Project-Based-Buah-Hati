@@ -21,8 +21,9 @@ import com.modul.buahhati.view.view_result.ResultViewModel
 
 class ViewModelFactory(
     private val userRepository: UserRepository,
-    private val prereference : LoginPreference,
+    private val preference : LoginPreference,
 ):ViewModelProvider.NewInstanceFactory(){
+
 
     @Suppress("UNCHECK_CAST")
     override fun <T:ViewModel>create(modelClass:Class<T>):T{
@@ -30,31 +31,31 @@ class ViewModelFactory(
             return SignUpViewModel(userRepository) as T
         }
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)){
-            return LoginViewModel(userRepository,prereference) as T
+            return LoginViewModel(userRepository,preference) as T
         }
         if (modelClass.isAssignableFrom(ProfileViewModel::class.java)){
-            return ProfileViewModel(prereference,userRepository) as T
+            return ProfileViewModel(preference,userRepository) as T
         }
         if (modelClass.isAssignableFrom(RegisAnakViewModel::class.java)){
-            return RegisAnakViewModel(userRepository, prereference) as T
+            return RegisAnakViewModel(userRepository, preference) as T
         }
         if (modelClass.isAssignableFrom(SharedViewModel::class.java)) {
             return SharedViewModel() as T
         }
         if (modelClass.isAssignableFrom(HomeViewModel::class.java)){
-            return HomeViewModel(userRepository) as T
+            return HomeViewModel(userRepository, preference) as T
         }
         if (modelClass.isAssignableFrom(DetailArticleViewModel::class.java)){
             return DetailArticleViewModel(userRepository) as T
         }
         if (modelClass.isAssignableFrom(InputPertumbuhanViewModel::class.java)){
-            return InputPertumbuhanViewModel(userRepository, prereference) as T
+            return InputPertumbuhanViewModel(userRepository, preference) as T
         }
         if (modelClass.isAssignableFrom(ResultViewModel::class.java)){
-            return ResultViewModel(userRepository, prereference) as T
+            return ResultViewModel(userRepository) as T
         }
         if (modelClass.isAssignableFrom(HistoryViewModel::class.java)){
-            return HistoryViewModel(userRepository) as T
+            return HistoryViewModel(userRepository, preference) as T
         }
         if (modelClass.isAssignableFrom(DetailHistoryViewModel::class.java)) {
             return DetailHistoryViewModel(userRepository) as T

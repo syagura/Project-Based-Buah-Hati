@@ -170,10 +170,10 @@ class UserRepository(
         }
     }
 
-    fun getAllAnalysis(): LiveData<Result<List<AnalysisResultResponse>>> = liveData {
+    fun getAllAnalysis(child_id: String): LiveData<Result<List<AnalysisResultResponse>>> = liveData {
         emit(Result.Loading)
         try {
-            val response = apiService.getAllAnalysis()
+            val response = apiService.getAllAnalysis(child_id)
             if (response.isSuccessful) {
                 val responseBody = response.body()
                 Log.d("UserRepository", "Response body: $responseBody") // Tambahkan log
@@ -189,10 +189,6 @@ class UserRepository(
             emit(Result.Error(e.message.toString()))
         }
     }
-
-
-
-
 
     companion object {
         @Volatile

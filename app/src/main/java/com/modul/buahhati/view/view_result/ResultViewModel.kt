@@ -9,7 +9,6 @@ import com.modul.buahhati.data.remote.response.AnalysisResultResponse
 
 class ResultViewModel(
     private val userRepository: UserRepository,
-    private val preference: LoginPreference
 ) : ViewModel() {
 
     fun getAnalysis(analysis_id: String): LiveData<Result<AnalysisResultResponse>> {
