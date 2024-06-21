@@ -1,0 +1,57 @@
+com.modul.buahhati.app-lifecycle-process-2.7.0-0 C:\Users\ACER\.gradle\caches\transforms-4\068b5abaf51ae48aab60f23e09512f47\transformed\lifecycle-process-2.7.0\res
+com.modul.buahhati.app-navigation-ui-ktx-2.7.7-1 C:\Users\ACER\.gradle\caches\transforms-4\1729fa1c6803fa01dbf14d7e8570af82\transformed\navigation-ui-ktx-2.7.7\res
+com.modul.buahhati.app-activity-ktx-1.9.0-2 C:\Users\ACER\.gradle\caches\transforms-4\1c9788aef60eacd1817b938e61a756e6\transformed\activity-ktx-1.9.0\res
+com.modul.buahhati.app-navigation-runtime-2.7.7-3 C:\Users\ACER\.gradle\caches\transforms-4\1f916df89a7cd8da2a06c66ccc6aa36f\transformed\navigation-runtime-2.7.7\res
+com.modul.buahhati.app-lifecycle-livedata-core-ktx-2.7.0-4 C:\Users\ACER\.gradle\caches\transforms-4\246a409c64ed8f411ed552b2aa448b57\transformed\lifecycle-livedata-core-ktx-2.7.0\res
+com.modul.buahhati.app-fragment-1.6.2-5 C:\Users\ACER\.gradle\caches\transforms-4\28eef694ec4a67e78591f332d0693228\transformed\fragment-1.6.2\res
+com.modul.buahhati.app-navigation-runtime-ktx-2.7.7-6 C:\Users\ACER\.gradle\caches\transforms-4\2e0ca712385045913ae54d42ac4dbee1\transformed\navigation-runtime-ktx-2.7.7\res
+com.modul.buahhati.app-datastore-release-7 C:\Users\ACER\.gradle\caches\transforms-4\32c810bfc28d2772ac250dc403f0fb37\transformed\datastore-release\res
+com.modul.buahhati.app-coordinatorlayout-1.1.0-8 C:\Users\ACER\.gradle\caches\transforms-4\3999e66a16f61c185b31640f66ebb574\transformed\coordinatorlayout-1.1.0\res
+com.modul.buahhati.app-lifecycle-runtime-2.7.0-9 C:\Users\ACER\.gradle\caches\transforms-4\42af15f27cc7615d7736aee21a81df47\transformed\lifecycle-runtime-2.7.0\res
+com.modul.buahhati.app-customview-poolingcontainer-1.0.0-10 C:\Users\ACER\.gradle\caches\transforms-4\434ad2ab7537acdaa99537d25edc1aca\transformed\customview-poolingcontainer-1.0.0\res
+com.modul.buahhati.app-profileinstaller-1.3.1-11 C:\Users\ACER\.gradle\caches\transforms-4\4f7dd903b1992fbba425b279f817118b\transformed\profileinstaller-1.3.1\res
+com.modul.buahhati.app-core-runtime-2.2.0-12 C:\Users\ACER\.gradle\caches\transforms-4\5677187c3dd671204057c29b8d0dcc61\transformed\core-runtime-2.2.0\res
+com.modul.buahhati.app-savedstate-ktx-1.2.1-13 C:\Users\ACER\.gradle\caches\transforms-4\570a0a6bded4c6769e208adf7086ae6f\transformed\savedstate-ktx-1.2.1\res
+com.modul.buahhati.app-datastore-core-release-14 C:\Users\ACER\.gradle\caches\transforms-4\5ccbf92da33b0af3173083c043e32889\transformed\datastore-core-release\res
+com.modul.buahhati.app-AnyChart-Android-1.1.5-15 C:\Users\ACER\.gradle\caches\transforms-4\6117458ef4565d01513567ad7ef0adc7\transformed\AnyChart-Android-1.1.5\res
+com.modul.buahhati.app-emoji2-1.2.0-16 C:\Users\ACER\.gradle\caches\transforms-4\659a1279df28fd13b2334db4fa67a530\transformed\emoji2-1.2.0\res
+com.modul.buahhati.app-slidingpanelayout-1.2.0-17 C:\Users\ACER\.gradle\caches\transforms-4\67034c3a490631d698170cdc5d24d5cf\transformed\slidingpanelayout-1.2.0\res
+com.modul.buahhati.app-activity-1.9.0-18 C:\Users\ACER\.gradle\caches\transforms-4\686beec4c4df289bcbd22837f231734b\transformed\activity-1.9.0\res
+com.modul.buahhati.app-constraintlayout-2.1.4-19 C:\Users\ACER\.gradle\caches\transforms-4\68cb5ad5aed6d29c2c09cdb979fa2ec2\transformed\constraintlayout-2.1.4\res
+com.modul.buahhati.app-navigation-ui-2.7.7-20 C:\Users\ACER\.gradle\caches\transforms-4\79881869996c637f668d8a1f48607a3c\transformed\navigation-ui-2.7.7\res
+com.modul.buahhati.app-savedstate-1.2.1-21 C:\Users\ACER\.gradle\caches\transforms-4\7d7bcdcd88d931508148e85094da80e8\transformed\savedstate-1.2.1\res
+com.modul.buahhati.app-startup-runtime-1.1.1-22 C:\Users\ACER\.gradle\caches\transforms-4\840bf1f9f4d34b5f372568c03bdb3c19\transformed\startup-runtime-1.1.1\res
+com.modul.buahhati.app-core-1.13.1-23 C:\Users\ACER\.gradle\caches\transforms-4\87a4b0a66f9e56438aaa568bcad97307\transformed\core-1.13.1\res
+com.modul.buahhati.app-window-1.0.0-24 C:\Users\ACER\.gradle\caches\transforms-4\87f37de4564ebfd201a7e573363405f5\transformed\window-1.0.0\res
+com.modul.buahhati.app-appcompat-resources-1.6.1-25 C:\Users\ACER\.gradle\caches\transforms-4\8b1df9081638bde863a146b33d2f406e\transformed\appcompat-resources-1.6.1\res
+com.modul.buahhati.app-annotation-experimental-1.4.0-26 C:\Users\ACER\.gradle\caches\transforms-4\8bcf5ecb5fc3998e4e38e8544579283c\transformed\annotation-experimental-1.4.0\res
+com.modul.buahhati.app-recyclerview-1.3.2-27 C:\Users\ACER\.gradle\caches\transforms-4\8e5129ac249f772b18b2200eb2b6b1bc\transformed\recyclerview-1.3.2\res
+com.modul.buahhati.app-lifecycle-viewmodel-savedstate-2.7.0-28 C:\Users\ACER\.gradle\caches\transforms-4\903d16a1833805e5f614241f37f71629\transformed\lifecycle-viewmodel-savedstate-2.7.0\res
+com.modul.buahhati.app-drawerlayout-1.1.1-29 C:\Users\ACER\.gradle\caches\transforms-4\91b580458ffdd278f08a6ab5dee9b559\transformed\drawerlayout-1.1.1\res
+com.modul.buahhati.app-navigation-fragment-ktx-2.7.7-30 C:\Users\ACER\.gradle\caches\transforms-4\b268e4e4144d6384752c4247be3e4569\transformed\navigation-fragment-ktx-2.7.7\res
+com.modul.buahhati.app-lifecycle-livedata-core-2.7.0-31 C:\Users\ACER\.gradle\caches\transforms-4\b35f80cb22b728211f283b07ba53365b\transformed\lifecycle-livedata-core-2.7.0\res
+com.modul.buahhati.app-material-1.12.0-32 C:\Users\ACER\.gradle\caches\transforms-4\b6760c774949ee6523c080b45747431a\transformed\material-1.12.0\res
+com.modul.buahhati.app-navigation-fragment-2.7.7-33 C:\Users\ACER\.gradle\caches\transforms-4\b9daf644dc8edccba953f5599b63e32f\transformed\navigation-fragment-2.7.7\res
+com.modul.buahhati.app-lifecycle-runtime-ktx-2.7.0-34 C:\Users\ACER\.gradle\caches\transforms-4\bd609d87da04ae0c01e86827ec3426e0\transformed\lifecycle-runtime-ktx-2.7.0\res
+com.modul.buahhati.app-datastore-preferences-release-35 C:\Users\ACER\.gradle\caches\transforms-4\befe5718932501cba4822f75e0186731\transformed\datastore-preferences-release\res
+com.modul.buahhati.app-navigation-common-ktx-2.7.7-36 C:\Users\ACER\.gradle\caches\transforms-4\cb194450d369f1a6c875a87dc1212e3a\transformed\navigation-common-ktx-2.7.7\res
+com.modul.buahhati.app-transition-1.5.0-37 C:\Users\ACER\.gradle\caches\transforms-4\ce8f4777dd6b97dc0f39a366588931bb\transformed\transition-1.5.0\res
+com.modul.buahhati.app-viewpager2-1.1.0-beta02-38 C:\Users\ACER\.gradle\caches\transforms-4\d066f7b5a242e4d7eccb172ee0a46dd7\transformed\viewpager2-1.1.0-beta02\res
+com.modul.buahhati.app-lifecycle-viewmodel-2.7.0-39 C:\Users\ACER\.gradle\caches\transforms-4\d7f4d99f05e562ab356f268d2b1dddcf\transformed\lifecycle-viewmodel-2.7.0\res
+com.modul.buahhati.app-navigation-common-2.7.7-40 C:\Users\ACER\.gradle\caches\transforms-4\d9cbcebfb6b61afb6b193d4e3164a30c\transformed\navigation-common-2.7.7\res
+com.modul.buahhati.app-emoji2-views-helper-1.2.0-41 C:\Users\ACER\.gradle\caches\transforms-4\dcf829204f9fb5c7cf491e0af939d02b\transformed\emoji2-views-helper-1.2.0\res
+com.modul.buahhati.app-core-ktx-1.13.1-42 C:\Users\ACER\.gradle\caches\transforms-4\de4220f17681bd24c733af153f5381dd\transformed\core-ktx-1.13.1\res
+com.modul.buahhati.app-cardview-1.0.0-43 C:\Users\ACER\.gradle\caches\transforms-4\e1535a5ca07be895e72efffbb0cc880c\transformed\cardview-1.0.0\res
+com.modul.buahhati.app-glide-4.16.0-44 C:\Users\ACER\.gradle\caches\transforms-4\e7853b9bbddc836ddb3e39256ba0b3d5\transformed\glide-4.16.0\res
+com.modul.buahhati.app-fragment-ktx-1.6.2-45 C:\Users\ACER\.gradle\caches\transforms-4\e96065b7547b0ccb873bee63b820de65\transformed\fragment-ktx-1.6.2\res
+com.modul.buahhati.app-lifecycle-livedata-ktx-2.7.0-46 C:\Users\ACER\.gradle\caches\transforms-4\ec0a0bc61d8ddf3c55dc93f58656ba1c\transformed\lifecycle-livedata-ktx-2.7.0\res
+com.modul.buahhati.app-lifecycle-livedata-2.7.0-47 C:\Users\ACER\.gradle\caches\transforms-4\eda82e84ea4d7e00ec6e3963054698c3\transformed\lifecycle-livedata-2.7.0\res
+com.modul.buahhati.app-appcompat-1.6.1-48 C:\Users\ACER\.gradle\caches\transforms-4\f840888b85a66644436adaa0d71824f3\transformed\appcompat-1.6.1\res
+com.modul.buahhati.app-lifecycle-viewmodel-ktx-2.7.0-49 C:\Users\ACER\.gradle\caches\transforms-4\fd4f422dea22ae14ddb58e8b1b267713\transformed\lifecycle-viewmodel-ktx-2.7.0\res
+com.modul.buahhati.app-pngs-50 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\generated\res\pngs\debug
+com.modul.buahhati.app-resValues-51 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\generated\res\resValues\debug
+com.modul.buahhati.app-packageDebugResources-52 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.modul.buahhati.app-packageDebugResources-53 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.modul.buahhati.app-debug-54 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.modul.buahhati.app-debug-55 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\src\debug\res
+com.modul.buahhati.app-main-56 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\src\main\res

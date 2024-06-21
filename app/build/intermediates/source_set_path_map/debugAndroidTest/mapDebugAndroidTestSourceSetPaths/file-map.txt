@@ -1,0 +1,6 @@
+com.modul.buahhati.test.app-core-1.5.0-0 C:\Users\ACER\.gradle\caches\transforms-4\4ea763fa51154d4eac2d1e368cd73041\transformed\core-1.5.0\res
+com.modul.buahhati.test.app-annotation-experimental-1.4.0-1 C:\Users\ACER\.gradle\caches\transforms-4\8bcf5ecb5fc3998e4e38e8544579283c\transformed\annotation-experimental-1.4.0\res
+com.modul.buahhati.test.app-androidTest-2 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\generated\res\resValues\androidTest\debug
+com.modul.buahhati.test.app-mergeDebugAndroidTestResources-3 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.modul.buahhati.test.app-mergeDebugAndroidTestResources-4 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.modul.buahhati.test.app-debugAndroidTest-5 D:\Galuh\Kuliah\Semester 6\Bangkit\Capstone\For Repo Besar\BuahHati2\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

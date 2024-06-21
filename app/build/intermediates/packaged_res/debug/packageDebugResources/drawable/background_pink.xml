@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shape Background -->
+    <item>
+        <shape>
+            <solid android:color="@color/black"/>
+            <corners android:radius="16dp"/>
+            <size
+                android:width="415dp"
+                android:height="200dp"/>
+        </shape>
+    </item>
+    <!-- Bitmap Image -->
+    <item>
+        <bitmap
+            android:src="@drawable/bg_home_top"
+            android:tileMode="disabled"
+            android:gravity="fill"/>
+    </item>
+</layer-list>

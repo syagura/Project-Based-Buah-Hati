@@ -1,0 +1,314 @@
+[
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_vector_login.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/vector_login.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_logout.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/logout.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_registrasi_anak.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_registrasi_anak.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_login.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_welcome.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_welcome.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/xml_backup_rules.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_home.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_home.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_add_data.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_add_data.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_button_riwayat.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/button_riwayat.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_simpan_data.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_simpan_data.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_fragment_profile.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/fragment_profile.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_curved_background.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/curved_background.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_logo.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/logo.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/xml_activity_on_boarding_scene.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/xml/activity_on_boarding_scene.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_backhome.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_backhome.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_card_background.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/card_background.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_circle_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_circle_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_fragment_input_pertumbuhan.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/fragment_input_pertumbuhan.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bg_texture.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bg_texture.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_baseline_person_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_baseline_person_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_baseline_account_circle_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/baseline_account_circle_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_add_anak.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_add_anak.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_on_boarding.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_on_boarding.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_baseline_email_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_baseline_email_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_rounded_corner_background.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/rounded_corner_background.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_signup.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_signup.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_rounded_corners.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/rounded_corners.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_food_vector.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/food_vector.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_main.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_background_pink.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/background_pink.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_row_item_history.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/row_item_history.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_circle_full_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_circle_full_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_row_item_informasi.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/row_item_informasi.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_tinggi.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_tinggi.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_view_result.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_view_result.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_parent_vector.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/parent_vector.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_sign_up.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bg_home_top.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bg_home_top.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_outline_add_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/outline_add_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_history.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_history.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_splash.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_ic_baseline_lock_24.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/ic_baseline_lock_24.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_row_item_profile.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/row_item_profile.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/xml_data_extraction_rules.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_signup.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_signup.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_logout.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_logout.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_fragment_home.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_lingkar_kepala.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_lingkar_kepala.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_berat.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_berat.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_logo_splash.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/logo_splash.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_grow_up_baby.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/grow_up_baby.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_btn_login.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/btn_login.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_detail_history.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_detail_history.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_input_pertumbuhan.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_input_pertumbuhan.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_monitoring_vector.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/monitoring_vector.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_preview_image_article.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/preview_image_article.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/drawable_bt_login.png.flat",
+        "source": "com.modul.buahhati.app-main-56:/drawable/bt_login.png"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/layout_activity_detail_article.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/layout/activity_detail_article.xml"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.modul.buahhati.app-main-56:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.modul.buahhati.app-debug-54:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.modul.buahhati.app-main-56:/menu/bottom_nav_menu.xml"
+    }
+]
