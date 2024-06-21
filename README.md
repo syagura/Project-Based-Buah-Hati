@@ -1,30 +1,55 @@
-# Buah Hati
+# C241-PS326 Bangkit 2024 Capstone Project
 
-This Aplication utilizes TensorFlow.js and Promt Engineering Gemini to predict child growth and provide nutrition recommendations using Google Cloud API.
+## Project Description
 
-## Overview
+BuahHati is an app that endeavors to address the pressing issue of monitoring and enhancing the growth and development of toddlers, particularly in Indonesia through advanced AI and machine learning technologies.
 
-This application aims to predict the growth of children based on historical data using machine learning models built with TensorFlow.js. It incorporates the Promt Engineering Gemini platform to get recommendations for nutrition are powered by Google Cloud APIs.
+## Screenshoots
 
-## Features
+<div>
+  <p align="center">
+    <img src="Images/Analysis.png" width="200">
+    <img src="Images/Home.png" width="200">
+    <img src="Images/History.png" width="200">
+  </p>
+</div>
 
-- **TensorFlow.js Model**: Trained machine learning models deployed using TensorFlow.js for predicting child growth patterns.
-- **Promt Engineering Gemini Integration**: Integration with Promt Engineering Gemini platform for data management and analytics.
-- **Google Cloud API**: Utilizes Google Cloud API for generating nutrition recommendations based on predicted growth .
-- **Visualization**: Provides visualizations of growth predictions and nutritional recommendations for easy understanding.
+## Deployment Steps
 
-## Installation
+Here are the steps for deploying this project:
 
-### Prerequisites
+1. Create Google Cloud Platform Project
+2. Create a Cloud Storage (Bucket) and enable Cloud Build API for Cloud Run
+3. Download the `group1-shard1of1.bin` and `model.json` files from [this link](https://github.com/syagura/Project-Based-Buah-Hati/tree/ml-develop-1/MLP/model/tfjs_model)
+4. Put both files into the created bucket, and make sure public access for the bucket is enabled
+5. Cloning from [this branch](https://github.com/syagura/Project-Based-Buah-Hati/tree/cc-dev) and add the `.env` file according to `.env.example` file
+6. Copy `model.json` link from bucket and then open the `.env` file, paste to the field of MODEL_URL
+7. Still on the project and run this command to install dependecies required
 
-- Node.js and npm installed locally.
-- Access to Promt Engineering Gemini platform.
-- Google Cloud API credentials.
+```sh
+npm install
+```
 
-### Setup
+7. Go to GCP and deploy the API to Cloud Run, and the copy the URL link has been created
+8. For the android app, open ApiConfig.kt, and change the value of BASE_URL variable to your URL has been created from Cloud Run
+9. Open gradle.properties, and change the value of latestinfo_apikey to your News API Key
 
-1. Clone the repository:
+Done
 
-   ```bash
-   git clone https://github.com/your-username/child-growth-predictor.git
-   cd child-growth-predictor
+## Built With Love By C241-PS326:
+
+### Android
+
+- [Galuh Ihsan Nurkholis A214D4KY3691](https://github.com/luhihsan)
+- [Javier Jinan Mukti Firjatullah A214D4KY3662](https://github.com/javierjinan22)
+
+### Cloud
+
+- [Adin Rama Ariyanto Putra C006D4KY0613](https://github.com/adinrama)
+- [Nicholas Ong C172D4KY0922](https://github.com/ni-cho-las-ong)
+
+### Machine Learning
+
+- [Risky Devandra Hartana M327D4KY3019](https://github.com/riskydevandra)
+- [Robi Ardiansyah M327D4KY3024](https://github.com/robiardian)
+- [Syahrul Gunawan Ramdhani M327D4KY1630](https://github.com/syagura)
