@@ -1,6 +1,6 @@
 # Buah Hati
 
-This project utilizes TensorFlow.js and Promt Engineering Gemini to predict child growth and provide nutrition recommendations using Google Cloud API.
+This Aplication utilizes TensorFlow.js and Promt Engineering Gemini to predict child growth and provide nutrition recommendations using Google Cloud API.
 
 ## Overview
 
