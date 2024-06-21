@@ -9,8 +9,8 @@ This application aims to predict the growth of children based on historical data
 ## Features
 
 - **TensorFlow.js Model**: Trained machine learning models deployed using TensorFlow.js for predicting child growth patterns.
-- **Prometheus Engineering Gemini Integration**: Integration with Prometheus Engineering Gemini platform for data management and analytics.
-- **Google Cloud API**: Utilizes Google Cloud API for generating nutrition recommendations based on predicted growth patterns.
+- **Promt Engineering Gemini Integration**: Integration with Prometheus Engineering Gemini platform for data management and analytics.
+- **Google Cloud API**: Utilizes Google Cloud API for generating nutrition recommendations based on predicted growth .
 - **Visualization**: Provides visualizations of growth predictions and nutritional recommendations for easy understanding.
 
 ## Installation
