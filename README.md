@@ -4,13 +4,29 @@
 
 BuahHati is an app that endeavors to address the pressing issue of monitoring and enhancing the growth and development of toddlers, particularly in Indonesia through advanced AI and machine learning technologies.
 
-## Screenshoots
+## Mobile App
 
 <div>
   <p align="center">
     <img src="Images/Analysis.png" width="200">
     <img src="Images/Home.png" width="200">
     <img src="Images/History.png" width="200">
+  </p>
+</div>
+
+## Classification ML Model
+
+<div>
+  <p align="center">
+    <img src="Images/ML.png" width="600">
+  </p>
+</div>
+
+## Cloud Architecture
+
+<div>
+  <p align="center">
+    <img src="Images/cloud_architecture.png" width="600">
   </p>
 </div>
 
