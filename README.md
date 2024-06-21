@@ -4,7 +4,7 @@ This Aplication utilizes TensorFlow.js and Promt Engineering Gemini to predict c
 
 ## Overview
 
-This application aims to predict the growth of children based on historical data using machine learning models built with TensorFlow.js. It incorporates the Promt Engineering Gemini platform to manage data and provide insights. The predictions and recommendations for nutrition are powered by Google Cloud APIs.
+This application aims to predict the growth of children based on historical data using machine learning models built with TensorFlow.js. It incorporates the Promt Engineering Gemini platform to get recommendations for nutrition are powered by Google Cloud APIs.
 
 ## Features
 
